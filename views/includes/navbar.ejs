@@ -1,0 +1,59 @@
+<!-- navbar created -->
+<div class="header-1">
+  <div class="header-logo">
+    <a href="/"><img src="/Assets/logo.jpg" alt="logo" /></a>
+    <a href="/"><h1>ScholarEase</h1></a>
+  </div>
+
+  <div class="header-nav">
+    <a href="/">Home</a>
+    <a href="/scholarships">Scholarship</a>
+    <a href="/contact">Contact</a>
+    <a href="/faq">FAQ</a>
+    <a href="/about">About</a>
+  </div>
+
+  <div class="search-section">
+    <form
+      action="/scholarships"
+      method="GET"
+      class="search-bar"
+      style="display: flex; align-items: center"
+    >
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input
+        type="search"
+        name="keyword"
+        placeholder="Search Scholarships..."
+      />
+    </form>
+    <!-- <i class="fa-solid fa-filter"></i>
+    <i class="fa-regular fa-moon"></i> -->
+  </div>
+
+  <% if (currentUser) { %>
+  <div class="user-profile">
+    <i class="fa-regular fa-user"></i>
+    <a href="/dashboard">
+      <span><%= currentUser.FirstName %> <%= currentUser.LastName %></span>
+    </a>
+    <a>
+      <form method="POST" action="/logout">
+        <button type="submit" class="logout-button">Logout</button>
+      </form>
+    </a>
+  </div>
+  <% } %> <% if (currentAdmin) { %>
+  <div class="user-profile">
+    <i class="fa-solid fa-shield"></i>
+    <span class="admin-name"><%= currentAdmin.username %></span>
+    <a href="/admin/dashboard" class="dashboard-link">Dashboard</a>
+  </div>
+  <% } %> <% if (!currentUser && !currentAdmin) { %>
+  <div class="actions">
+    <a href="/login">Login</a>
+    <a href="/signup">Sign Up</a>
+    <a href="/admin/login">Admin</a>
+  </div>
+  <% } %>
+</div>

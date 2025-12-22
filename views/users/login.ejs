@@ -1,0 +1,46 @@
+<%- layout("layouts/boilerplate.ejs") %>
+
+<!-- login page content starts here -->
+
+<div class="student-container">
+  <div class="student-left">
+    <div class="student-left-text">
+      <h2>Empowering Dreams Through Education</h2>
+      <p>
+        Join thousands of students who have found their path to success through
+        our scholarship programs.
+      </p>
+    </div>
+  </div>
+
+  <div class="student-right">
+    <div class="student-card">
+      <div class="student-logo-box">
+        <div class="student-logo">
+          <i class="fa-solid fa-graduation-cap" style="color: white"></i>
+        </div>
+        <h3>Welcome Back</h3>
+        <p>Sign in to access your scholarship portal</p>
+      </div>
+
+      <form class="student-form" method="POST" action="/login">
+        <label>Email Address</label>
+        <input type="email" placeholder="Enter your email" name="Email" required />
+
+        <label>Password</label>
+        <div class="student-password-box">
+          <input type="password" placeholder="Enter your password" name="Password" required />
+        </div>
+
+        <button class="student-btn">Sign In</button>
+
+        <div class="student-divider"><span></span> or <span></span></div>
+
+        <div class="student-bottom-links">
+          <p>Don't have an account? <a href="/signup">Create an account</a></p>
+          <p>Need help? <a href="/contact">Contact Support</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+<%- layout("layouts/boilerplate") %>
+
+<link rel="stylesheet" href="/css/reviews.css" />
+
+<main class="reviews-main">
+  <!-- Header Section -->
+  <section class="reviews-header">
+    <div class="reviews-header-content">
+      <p class="tag">✨ Community Feedback</p>
+      <h1>User Reviews & Testimonials</h1>
+      <p class="subheader">Read what students and users have to say about their experiences with scholarships</p>
+    </div>
+  </section>
+
+  <!-- Review Form Section -->
+  <section class="review-form-section">
+    <div class="form-container">
+      <h2>Share Your Experience</h2>
+      <p class="form-description">Help other students by sharing your scholarship experience</p>
+      
+      <form method="POST" action="/reviews" class="review-form">
+        <div class="form-group">
+          <label for="scholarship">Scholarship Name *</label>
+          <input type="text" id="scholarship" name="scholarship" required placeholder="e.g., National Merit Scholarship" />
+        </div>
+
+        <div class="form-group">
+          <label for="amount">Scholarship Amount (₹) *</label>
+          <input type="number" id="amount" name="amount" required placeholder="e.g., 50000" />
+        </div>
+
+        <div class="form-group">
+          <label for="name">Your Name *</label>
+          <input type="text" id="name" name="name" required placeholder="Full Name" />
+        </div>
+
+        <div class="form-group">
+          <label for="about">Brief Summary (25-50 words) *</label>
+          <textarea id="about" name="about" required placeholder="Brief description of your achievement..." maxlength="200"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Detailed Review *</label>
+          <textarea id="description" name="description" required placeholder="Share your complete experience, how the scholarship helped, and any advice for other students..." rows="6"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Review</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Reviews Display Section -->
+  <section class="reviews-list-section">
+    <div class="reviews-list-header">
+      <h2>Recent Reviews</h2>
+      <p class="reviews-count"><%= reviews.length %> reviews</p>
+    </div>
+
+    <% if (reviews.length === 0) { %>
+      <div class="no-reviews">
+        <i class="fa-regular fa-comment-dots"></i>
+        <p>No reviews yet. Be the first to share your experience!</p>
+      </div>
+    <% } else { %>
+      <div class="reviews-grid">
+        <% reviews.forEach(review => { %>
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-info">
+                <div class="reviewer-avatar">
+                  <%= review.Name && review.Name.length > 0 ? review.Name.charAt(0).toUpperCase() : '?' %>
+                </div>
+                <div class="reviewer-details">
+                  <h3><%= review.Name || 'Anonymous' %></h3>
+                  <p class="scholarship-name"><%= review.scholarship %></p>
+                </div>
+              </div>
+              <div class="review-amount">
+                <span class="amount-label">Amount</span>
+                <span class="amount-value">₹<%= review.Amount && review.Amount.toLocaleString ? review.Amount.toLocaleString() : '0' %></span>
+              </div>
+            </div>
+
+            <div class="review-body">
+              <p class="review-summary"><strong><%= review.About || 'No summary provided' %></strong></p>
+              <p class="review-text"><%= review.Discription || 'No description provided' %></p>
+            </div>
+
+            <div class="review-footer">
+              <span class="review-date">Recently shared</span>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    <% } %>
+  </section>
+</main>

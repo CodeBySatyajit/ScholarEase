@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ScholarHub</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Font Awesome (for legacy navbar icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SzlrxWriC3nXoa1p2J0z7qPpSL7dBx1HbAq3Z3VUekc7utU6Cw8qlp+Am+KX9MK2yZ0C2B1Xr3rV0cp3xN3OA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Site Navbar CSS -->
+    <link rel="stylesheet" href="/css/navbar.css">
+
+       <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Custom Dashboard CSS -->
+    <link rel="stylesheet" href="/css/user/dashboard.css">
+</head>
+<body>
+    <!-- Main site navbar -->
+    <%- include('../includes/navbar.ejs') %>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <%- include('../includes/dashboard-sidebar.ejs') %>
+
+        <!-- Main Content Area -->
+        <div class="dashboard-main">
+            <!-- Top Navbar -->
+            <%- include('../includes/dashboard-topbar.ejs') %>
+
+            <!-- Flash Messages -->
+            <% if (success && success.length) { %>
+                <div class="alert alert-success alert-dismissible fade show m-4" role="alert">
+                    <i class="bi bi-check-circle-fill me-2"></i>
+                    <%= success %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            <% } %>
+            
+            <% if (error && error.length) { %>
+                <div class="alert alert-danger alert-dismissible fade show m-4" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                    <%= error %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            <% } %>
+
+            <!-- Page Content -->
+            <div class="dashboard-content">
+                <%- body %>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom Dashboard JS -->
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

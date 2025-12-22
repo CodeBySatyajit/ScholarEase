@@ -1,0 +1,82 @@
+<%- layout("layouts/dashboard-layout.ejs") %>
+
+<!-- Saved Scholarships Page -->
+<div class="row g-4">
+    <div class="col-12">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white border-0 py-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0"><i class="bi bi-bookmark-heart me-2"></i>Saved Scholarships</h5>
+                    <a href="/scholarships" class="btn btn-primary btn-sm">
+                        <i class="bi bi-search me-1"></i> Browse Scholarships
+                    </a>
+                </div>
+            </div>
+            <div class="card-body p-4">
+                <% if (savedScholarships && savedScholarships.length > 0) { %>
+                    <!-- Scholarships List -->
+                    <div class="row g-3">
+                        <% savedScholarships.forEach(scholarship => { %>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card scholarship-card border h-100">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <span class="badge bg-primary"><%= scholarship.type %></span>
+                                        <button class="btn btn-sm btn-link text-danger p-0 remove-bookmark" data-scholarship-id="<%= scholarship._id %>" title="Remove from saved">
+                                            <i class="bi bi-bookmark-fill"></i>
+                                        </button>
+                                    </div>
+                                    <h6 class="card-title mb-2"><%= scholarship.title %></h6>
+                                    <p class="card-text small text-muted mb-2">
+                                        <i class="bi bi-currency-rupee"></i> <%= scholarship.Amount %>
+                                    </p>
+                                    <p class="card-text small text-muted mb-3">
+                                        <i class="bi bi-calendar3"></i> Deadline: <%= scholarship.Deadline.toLocaleDateString('en-GB') %>
+                                    </p>
+                                    <% if (scholarship.ApplyLink) { %>
+                                    <a href="<%= scholarship.ApplyLink %>" target="_blank" class="btn btn-primary btn-sm w-100">
+                                        Apply Now
+                                    </a>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                    </div>
+                <% } else { %>
+                    <!-- Empty State -->
+                    <div class="text-center py-5">
+                        <div class="empty-state-icon mb-3">
+                            <i class="bi bi-bookmark text-muted" style="font-size: 4rem;"></i>
+                        </div>
+                        <h5 class="text-muted mb-2">No Saved Scholarships Yet</h5>
+                        <p class="text-muted mb-4">
+                            Browse through our scholarship catalog and save the ones you're interested in!
+                        </p>
+                        <a href="/scholarships" class="btn btn-primary">
+                            <i class="bi bi-search me-2"></i>Explore Scholarships
+                        </a>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+
+        <!-- Information Card -->
+        <div class="card border-0 shadow-sm mt-4 bg-light">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-1 text-center">
+                        <i class="bi bi-info-circle-fill text-primary fs-2"></i>
+                    </div>
+                    <div class="col-md-11">
+                        <h6 class="mb-2">How to Save Scholarships</h6>
+                        <p class="small text-muted mb-0">
+                            Click the bookmark icon on any scholarship card to save it to your list. 
+                            You can manage all your saved scholarships from this page and apply when you're ready.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<%- layout("layouts/boilerplate.ejs") %>
+
+<!-- signup page content starts here -->
+
+<div class="signup-container">
+  <div class="signup-left">
+    <div class="signup-left-text">
+      <h2>Start Your Journey to Success</h2>
+      <p>
+        Create your account and unlock access to thousands of scholarship
+        opportunities tailored for you.
+      </p>
+    </div>
+  </div>
+
+  <div class="signup-right">
+    <div class="signup-card">
+      <div class="signup-top">
+        <div class="signup-logo">
+          <i class="fa-solid fa-graduation-cap" style="color: white"></i>
+        </div>
+        <h3>Create Account</h3>
+        <p>Join our scholarship community today</p>
+      </div>
+
+      <form class="signup-form" method="POST" action="/signup" id="signupForm">
+        <div class="name-row">
+          <div class="name-box">
+            <label>First Name</label>
+            <input type="text" name="FirstName" placeholder="John" required />
+          </div>
+          <div class="name-box">
+            <label>Last Name</label>
+            <input type="text" name="LastName" placeholder="Doe" required />
+          </div>
+        </div>
+
+        <label>Email Address</label>
+        <input
+          type="email"
+          class="full-input"
+          name="Email"
+          placeholder="john.doe@example.com"
+          required
+        />
+
+        <label>Phone Number</label>
+        <input
+          type="number"
+          class="full-input"
+          name="Mobile"
+          placeholder="9876543210"
+          required
+        />
+
+        <label>Password</label>
+        <div class="pass-box">
+          <input
+            type="password"
+            name="Password"
+            placeholder="Create a password"
+            required
+          />
+        </div>
+
+        <button type="submit" class="signup-btn">Create Account</button>
+
+        <p class="signup-bottom">
+          Already have an account? <a href="/login">Sign in</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

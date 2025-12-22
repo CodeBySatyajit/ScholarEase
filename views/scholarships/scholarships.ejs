@@ -1,0 +1,257 @@
+<%- layout("layouts/boilerplate.ejs") %>
+
+<main>
+  <div class="section1">
+    <div class="trending-layout">
+      <!-- FILTER PANEL -->
+      <div class="filter-panel">
+        <h4>Filter</h4>
+        
+        <form action="/scholarships" method="GET" id="filterForm">
+          <!-- Hidden input to preserve search keyword from navbar -->
+          <input type="hidden" name="keyword" value="<%= filters.keyword || '' %>" />
+
+          <div class="filter-group">
+            <label>Class / Education Level</label>
+            <select name="classLevel">
+              <option value="">All</option>
+              <option value="Class 1" <%= filters.classLevel === 'Class 1' ? 'selected' : '' %>>Class 1</option>
+              <option value="Class 2" <%= filters.classLevel === 'Class 2' ? 'selected' : '' %>>Class 2</option>
+              <option value="Class 3" <%= filters.classLevel === 'Class 3' ? 'selected' : '' %>>Class 3</option>
+              <option value="Class 4" <%= filters.classLevel === 'Class 4' ? 'selected' : '' %>>Class 4</option>
+              <option value="Class 5" <%= filters.classLevel === 'Class 5' ? 'selected' : '' %>>Class 5</option>
+              <option value="Class 6" <%= filters.classLevel === 'Class 6' ? 'selected' : '' %>>Class 6</option>
+              <option value="Class 7" <%= filters.classLevel === 'Class 7' ? 'selected' : '' %>>Class 7</option>
+              <option value="Class 8" <%= filters.classLevel === 'Class 8' ? 'selected' : '' %>>Class 8</option>
+              <option value="Class 9" <%= filters.classLevel === 'Class 9' ? 'selected' : '' %>>Class 9</option>
+              <option value="Class 10" <%= filters.classLevel === 'Class 10' ? 'selected' : '' %>>Class 10</option>
+              <option value="Class 11" <%= filters.classLevel === 'Class 11' ? 'selected' : '' %>>Class 11</option>
+              <option value="Class 12" <%= filters.classLevel === 'Class 12' ? 'selected' : '' %>>Class 12</option>
+              <option value="Diploma" <%= filters.classLevel === 'Diploma' ? 'selected' : '' %>>Diploma</option>
+              <option value="Graduation" <%= filters.classLevel === 'Graduation' ? 'selected' : '' %>>Graduation</option>
+              <option value="Post Graduation" <%= filters.classLevel === 'Post Graduation' ? 'selected' : '' %>>Post Graduation</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label>Gender</label>
+            <select name="gender">
+              <option value="">All</option>
+              <option value="Male" <%= filters.gender === 'Male' ? 'selected' : '' %>>Male</option>
+              <option value="Female" <%= filters.gender === 'Female' ? 'selected' : '' %>>Female</option>
+              <option value="Both" <%= filters.gender === 'Both' ? 'selected' : '' %>>Both</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label>Type</label>
+            <select name="type">
+              <option value="">All</option>
+              <option value="Government" <%= filters.type === 'Government' ? 'selected' : '' %>>Government</option>
+              <option value="Private" <%= filters.type === 'Private' ? 'selected' : '' %>>Private</option>
+              <option value="Other" <%= filters.type === 'Other' ? 'selected' : '' %>>Other</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label>State</label>
+            <select name="state">
+              <option value="">All</option>
+              <!-- INDIA STATES -->
+              <option value="Andhra Pradesh" <%= filters.state === 'Andhra Pradesh' ? 'selected' : '' %>>Andhra Pradesh</option>
+              <option value="Arunachal Pradesh" <%= filters.state === 'Arunachal Pradesh' ? 'selected' : '' %>>Arunachal Pradesh</option>
+              <option value="Assam" <%= filters.state === 'Assam' ? 'selected' : '' %>>Assam</option>
+              <option value="Bihar" <%= filters.state === 'Bihar' ? 'selected' : '' %>>Bihar</option>
+              <option value="Chhattisgarh" <%= filters.state === 'Chhattisgarh' ? 'selected' : '' %>>Chhattisgarh</option>
+              <option value="Goa" <%= filters.state === 'Goa' ? 'selected' : '' %>>Goa</option>
+              <option value="Gujarat" <%= filters.state === 'Gujarat' ? 'selected' : '' %>>Gujarat</option>
+              <option value="Haryana" <%= filters.state === 'Haryana' ? 'selected' : '' %>>Haryana</option>
+              <option value="Himachal Pradesh" <%= filters.state === 'Himachal Pradesh' ? 'selected' : '' %>>Himachal Pradesh</option>
+              <option value="Jharkhand" <%= filters.state === 'Jharkhand' ? 'selected' : '' %>>Jharkhand</option>
+              <option value="Karnataka" <%= filters.state === 'Karnataka' ? 'selected' : '' %>>Karnataka</option>
+              <option value="Kerala" <%= filters.state === 'Kerala' ? 'selected' : '' %>>Kerala</option>
+              <option value="Madhya Pradesh" <%= filters.state === 'Madhya Pradesh' ? 'selected' : '' %>>Madhya Pradesh</option>
+              <option value="Maharashtra" <%= filters.state === 'Maharashtra' ? 'selected' : '' %>>Maharashtra</option>
+              <option value="Manipur" <%= filters.state === 'Manipur' ? 'selected' : '' %>>Manipur</option>
+              <option value="Meghalaya" <%= filters.state === 'Meghalaya' ? 'selected' : '' %>>Meghalaya</option>
+              <option value="Mizoram" <%= filters.state === 'Mizoram' ? 'selected' : '' %>>Mizoram</option>
+              <option value="Nagaland" <%= filters.state === 'Nagaland' ? 'selected' : '' %>>Nagaland</option>
+              <option value="Odisha" <%= filters.state === 'Odisha' ? 'selected' : '' %>>Odisha</option>
+              <option value="Punjab" <%= filters.state === 'Punjab' ? 'selected' : '' %>>Punjab</option>
+              <option value="Rajasthan" <%= filters.state === 'Rajasthan' ? 'selected' : '' %>>Rajasthan</option>
+              <option value="Sikkim" <%= filters.state === 'Sikkim' ? 'selected' : '' %>>Sikkim</option>
+              <option value="Tamil Nadu" <%= filters.state === 'Tamil Nadu' ? 'selected' : '' %>>Tamil Nadu</option>
+              <option value="Telangana" <%= filters.state === 'Telangana' ? 'selected' : '' %>>Telangana</option>
+              <option value="Tripura" <%= filters.state === 'Tripura' ? 'selected' : '' %>>Tripura</option>
+              <option value="Uttar Pradesh" <%= filters.state === 'Uttar Pradesh' ? 'selected' : '' %>>Uttar Pradesh</option>
+              <option value="Uttarakhand" <%= filters.state === 'Uttarakhand' ? 'selected' : '' %>>Uttarakhand</option>
+              <option value="West Bengal" <%= filters.state === 'West Bengal' ? 'selected' : '' %>>West Bengal</option>
+
+              <!-- UNION TERRITORIES -->
+              <option value="Chandigarh" <%= filters.state === 'Chandigarh' ? 'selected' : '' %>>Chandigarh</option>
+              <option value="Delhi" <%= filters.state === 'Delhi' ? 'selected' : '' %>>Delhi</option>
+              <option value="Jammu and Kashmir" <%= filters.state === 'Jammu and Kashmir' ? 'selected' : '' %>>Jammu and Kashmir</option>
+              <option value="Ladakh" <%= filters.state === 'Ladakh' ? 'selected' : '' %>>Ladakh</option>
+              <option value="Lakshadweep" <%= filters.state === 'Lakshadweep' ? 'selected' : '' %>>Lakshadweep</option>
+              <option value="Puducherry" <%= filters.state === 'Puducherry' ? 'selected' : '' %>>Puducherry</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label>Religion</label>
+            <select name="religion">
+              <option value="">All</option>
+              <option value="Hindu" <%= filters.religion === 'Hindu' ? 'selected' : '' %>>Hindu</option>
+              <option value="Muslim" <%= filters.religion === 'Muslim' ? 'selected' : '' %>>Muslim</option>
+              <option value="Sikh" <%= filters.religion === 'Sikh' ? 'selected' : '' %>>Sikh</option>
+              <option value="Christian" <%= filters.religion === 'Christian' ? 'selected' : '' %>>Christian</option>
+              <option value="Buddhist" <%= filters.religion === 'Buddhist' ? 'selected' : '' %>>Buddhist</option>
+              <option value="Jain" <%= filters.religion === 'Jain' ? 'selected' : '' %>>Jain</option>
+              <option value="Parsi" <%= filters.religion === 'Parsi' ? 'selected' : '' %>>Parsi</option>
+              <option value="All" <%= filters.religion === 'All' ? 'selected' : '' %>>All</option>
+            </select>
+          </div>
+          
+          <div class="filter-group">
+            <label>Course Category</label>
+            <select name="courseCategory">
+              <option value="">All</option>
+              <option value="Engineering" <%= filters.courseCategory === 'Engineering' ? 'selected' : '' %>>Engineering</option>
+              <option value="Medical" <%= filters.courseCategory === 'Medical' ? 'selected' : '' %>>Medical</option>
+              <option value="Arts" <%= filters.courseCategory === 'Arts' ? 'selected' : '' %>>Arts</option>
+              <option value="Commerce" <%= filters.courseCategory === 'Commerce' ? 'selected' : '' %>>Commerce</option>
+              <option value="Science" <%= filters.courseCategory === 'Science' ? 'selected' : '' %>>Science</option>
+              <option value="Law" <%= filters.courseCategory === 'Law' ? 'selected' : '' %>>Law</option>
+              <option value="Management" <%= filters.courseCategory === 'Management' ? 'selected' : '' %>>Management</option>
+              <option value="IT" <%= filters.courseCategory === 'IT' ? 'selected' : '' %>>IT</option>
+              <option value="Agriculture" <%= filters.courseCategory === 'Agriculture' ? 'selected' : '' %>>Agriculture</option>
+            </select>
+          </div>
+          
+          <button type="submit" class="apply-filter-btn">Apply Filters</button>
+          <button type="button" class="apply-filter-btn" onclick="window.location.href='/scholarships'" style="background: #6c757d; margin-top: 10px;">Clear Filters</button>
+        </form>
+      </div>
+
+      <!-- CARD GRID -->
+      <div class="section1-content">
+        <!-- Add popup window for scholarship details -->
+        <div id="popupOverlay" class="overlay"></div>
+
+        <!-- Popup Box -->
+        <div id="popupBox" class="popup">
+          <button id="closePopup" class="close-btn">&times;</button>
+          <h2 id="popupTitle">Scholarship Details</h2>
+          <div class="popup-content">
+            <div class="popup-detail">
+              <strong>Type:</strong> <span id="popupType"></span>
+            </div>
+            <div class="popup-detail">
+              <strong>Amount:</strong> <span id="popupAmount"></span>
+            </div>
+            <div class="popup-detail">
+              <strong>Deadline:</strong> <span id="popupDeadline"></span>
+            </div>
+            <div class="popup-detail">
+              <strong>Region:</strong> <span id="popupRegion"></span>
+            </div>
+            <div class="popup-detail">
+              <strong>About:</strong>
+              <p id="popupAbout"></p>
+            </div>
+            <div class="popup-detail">
+              <strong>Eligibility:</strong>
+              <p id="popupEligibility"></p>
+            </div>
+            <div class="popup-detail">
+              <strong>Benefits:</strong>
+              <p id="popupBenefits"></p>
+            </div>
+             <div class="popup-detail">
+        <strong>Education:</strong> <span id="popupEducation"></span>
+            </div>
+            <div class="popup-detail">
+              <strong>Required Documents:</strong>
+              <p id="popupDocuments"></p>
+            </div>
+            <div class="popup-detail">
+              <strong>Gender:</strong> <span id="popupGender"></span>
+            </div>
+            <div class="popup-detail">
+              <strong>Religion:</strong> <span id="popupReligion"></span>
+            </div>
+            <div class="popup-detail">
+              <strong>Course Category:</strong> <span id="popupCourseCategory"></span>
+            </div>
+            <div class="popup-detail">
+              <strong>State:</strong> <span id="popupState"></span>
+            </div>
+          </div>
+          <div class="popup-buttons">
+            <button id="confirmApply" class="btn-confirm">Apply Now</button>
+            <button id="cancelApply" class="btn-cancel">Cancel</button>
+          </div>
+        </div>
+
+        <div class="section1-grid">
+          <!-- CARD -->
+
+          <% for(let scholarship of scholarships) { %>
+          <div class="section1-card" data-scholarship-id="<%= scholarship._id %>">
+            <div class="section1-article1">
+              <div class="info1"><%= scholarship.type %></div>
+              <div class="info2">
+                <% if (currentUser) { %>
+                  <% const isBookmarked = savedScholarshipIds && savedScholarshipIds.includes(scholarship._id.toString()); %>
+                  <button class="bookmark-btn <%= isBookmarked ? 'bookmarked' : '' %>" data-scholarship-id="<%= scholarship._id %>" title="<%= isBookmarked ? 'Remove from saved' : 'Save scholarship' %>">
+                    <i class="<%= isBookmarked ? 'fa-solid' : 'fa-regular' %> fa-bookmark"></i>
+                  </button>
+                <% } %>
+                <i class="fa-solid fa-arrow-trend-up"></i><span>Trending</span>
+              </div>
+            </div>
+            <div class="section1-article2">
+              <h5><%= scholarship.title %></h5>
+              <p class="i1">
+                <i class="fa-solid fa-indian-rupee-sign"></i> Amount : <%=
+                scholarship.Amount %>
+              </p>
+              <p class="i1">
+                <i class="fa-regular fa-calendar"></i> Deadline : <%=
+                scholarship.Deadline.toLocaleDateString("en-GB") %>
+              </p>
+              <p class="i1">
+                Eligibility : <%= scholarship.Eligibility.substring(0, 50) %>...
+              </p>
+            </div>
+            <div class="section3-article3">
+              <button
+                style="width: 100%"
+                class="apply-now-btn"
+                data-link="<%= scholarship.ApplyLink %>"
+                data-title="<%= scholarship.title %>"
+                data-type="<%= scholarship.type %>"
+                data-amount="<%= scholarship.Amount %>"
+                data-about="<%= scholarship.About %>"
+                data-eligibility="<%= scholarship.Eligibility %>"
+                data-deadline="<%= scholarship.Deadline.toLocaleDateString('en-GB') %>"
+                data-benefits="<%= scholarship.Benefits %>"
+                data-region="<%= scholarship.Region %>"
+                data-documents="<%= scholarship.Documents %>"
+                data-Gender="<%= scholarship.Gender %>"
+                data-Religion="<%= scholarship.Religion %>"
+                data-CourseCategory="<%= scholarship.CourseCategory %>"
+                data-State="<%= scholarship.State %>"
+              >
+                Apply Now
+              </button>
+            </div>
+          </div>
+          <% } %>
+
+          <!-- add card from here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

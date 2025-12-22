@@ -1,0 +1,190 @@
+<%- layout("layouts/dashboard-layout.ejs") %>
+
+<!-- My Profile Page -->
+<div class="row g-4">
+    <!-- Profile Form -->
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white border-0 py-3">
+                <h5 class="mb-0"><i class="bi bi-person-circle me-2"></i>Personal Information</h5>
+            </div>
+            <div class="card-body p-4">
+                <form action="/profile" method="POST">
+                    <!-- Basic Information -->
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="FirstName" class="form-label fw-semibold">
+                                First Name <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" 
+                                   class="form-control form-control-lg" 
+                                   id="FirstName" 
+                                   name="FirstName" 
+                                   value="<%= user.FirstName %>" 
+                                   required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="LastName" class="form-label fw-semibold">
+                                Last Name <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" 
+                                   class="form-control form-control-lg" 
+                                   id="LastName" 
+                                   name="LastName" 
+                                   value="<%= user.LastName %>" 
+                                   required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="Email" class="form-label fw-semibold">
+                                Email Address <span class="text-danger">*</span>
+                            </label>
+                            <input type="email" 
+                                   class="form-control form-control-lg" 
+                                   id="Email" 
+                                   name="Email" 
+                                   value="<%= user.Email %>" 
+                                   readonly 
+                                   disabled>
+                            <small class="text-muted">Email cannot be changed</small>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="Mobile" class="form-label fw-semibold">
+                                Mobile Number <span class="text-danger">*</span>
+                            </label>
+                            <input type="tel" 
+                                   class="form-control form-control-lg" 
+                                   id="Mobile" 
+                                   name="Mobile" 
+                                   value="<%= user.Mobile %>" 
+                                   pattern="[0-9]{10}" 
+                                   required>
+                            <small class="text-muted">10-digit mobile number</small>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="dateOfBirth" class="form-label fw-semibold">
+                                Date of Birth
+                            </label>
+                            <input type="date" 
+                                   class="form-control form-control-lg" 
+                                   id="dateOfBirth" 
+                                   name="dateOfBirth" 
+                                   value="<%= userInfo && userInfo.dateOfBirth ? userInfo.dateOfBirth.toISOString().split('T')[0] : '' %>" 
+                                   max="<%= new Date().toISOString().split('T')[0] %>">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="gender" class="form-label fw-semibold">
+                                Gender
+                            </label>
+                            <select class="form-select form-select-lg" id="gender" name="gender">
+                                <option value="">Select Gender</option>
+                                <option value="Male" <%= userInfo && userInfo.gender === 'Male' ? 'selected' : '' %>>Male</option>
+                                <option value="Female" <%= userInfo && userInfo.gender === 'Female' ? 'selected' : '' %>>Female</option>
+                                <option value="Other" <%= userInfo && userInfo.gender === 'Other' ? 'selected' : '' %>>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="educationLevel" class="form-label fw-semibold">
+                                Education Level
+                            </label>
+                            <select class="form-select form-select-lg" id="educationLevel" name="educationLevel">
+                                <option value="">Select Education Level</option>
+                                <option value="High School" <%= userInfo && userInfo.educationLevel === 'High School' ? 'selected' : '' %>>High School</option>
+                                <option value="Undergraduate" <%= userInfo && userInfo.educationLevel === 'Undergraduate' ? 'selected' : '' %>>Undergraduate</option>
+                                <option value="Graduate" <%= userInfo && userInfo.educationLevel === 'Graduate' ? 'selected' : '' %>>Graduate</option>
+                                <option value="Postgraduate" <%= userInfo && userInfo.educationLevel === 'Postgraduate' ? 'selected' : '' %>>Postgraduate</option>
+                                <option value="PhD" <%= userInfo && userInfo.educationLevel === 'PhD' ? 'selected' : '' %>>PhD</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="state" class="form-label fw-semibold">
+                                State
+                            </label>
+                            <input type="text" 
+                                   class="form-control form-control-lg" 
+                                   id="state" 
+                                   name="state" 
+                                   value="<%= userInfo && userInfo.state ? userInfo.state : '' %>" 
+                                   placeholder="e.g., Maharashtra">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="city" class="form-label fw-semibold">
+                                City
+                            </label>
+                            <input type="text" 
+                                   class="form-control form-control-lg" 
+                                   id="city" 
+                                   name="city" 
+                                   value="<%= userInfo && userInfo.city ? userInfo.city : '' %>" 
+                                   placeholder="e.g., Mumbai">
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="mt-4 d-flex gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg px-4">
+                            <i class="bi bi-check-circle me-2"></i>Update Profile
+                        </button>
+                        <a href="/dashboard" class="btn btn-outline-secondary btn-lg px-4">
+                            Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Summary -->
+    <div class="col-lg-4">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body text-center p-4">
+                <div class="avatar-xl bg-primary bg-gradient text-white mx-auto mb-3">
+                    <%= user.FirstName.charAt(0).toUpperCase() %><%= user.LastName.charAt(0).toUpperCase() %>
+                </div>
+                <h5 class="mb-1"><%= user.FirstName %> <%= user.LastName %></h5>
+                <p class="text-muted mb-3"><%= user.Email %></p>
+                
+                <div class="text-start mt-4">
+                    <h6 class="text-muted mb-3">Profile Strength</h6>
+                    <% 
+                        let completionPercentage = 40;
+                        if (userInfo && userInfo.dateOfBirth) completionPercentage += 10;
+                        if (userInfo && userInfo.gender) completionPercentage += 10;
+                        if (userInfo && userInfo.educationLevel) completionPercentage += 20;
+                        if (userInfo && userInfo.state) completionPercentage += 10;
+                        if (userInfo && userInfo.city) completionPercentage += 10;
+                    %>
+                    <div class="progress mb-2" style="height: 8px;">
+                        <div class="progress-bar bg-success" 
+                             role="progressbar" 
+                             style="width: <%= completionPercentage %>%;" 
+                             aria-valuenow="<%= completionPercentage %>" 
+                             aria-valuemin="0" 
+                             aria-valuemax="100"></div>
+                    </div>
+                    <small class="text-muted"><%= completionPercentage %>% Complete</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips Card -->
+        <div class="card border-0 shadow-sm mt-4 bg-light">
+            <div class="card-body">
+                <h6 class="mb-3"><i class="bi bi-info-circle me-2"></i>Profile Tips</h6>
+                <ul class="small text-muted mb-0 ps-3">
+                    <li class="mb-2">Keep your contact information up to date</li>
+                    <li class="mb-2">Complete all fields for better scholarship matches</li>
+                    <li class="mb-2">Education level helps us recommend relevant opportunities</li>
+                    <li>Location data helps find local scholarships</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

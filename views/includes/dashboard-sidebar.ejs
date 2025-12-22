@@ -1,0 +1,68 @@
+<!-- Dashboard Sidebar -->
+<aside class="dashboard-sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <div class="logo-container">
+           <a href="/"><img src="../Assets/logo.jpg" alt="logo" class="logo-img"/></a>
+            <h5 class="mb-0 ms-2">ScholarEase</h5>
+        </div>
+        <button class="btn btn-link d-lg-none" id="closeSidebar">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
+
+    <nav class="sidebar-nav">
+        <ul class="nav flex-column">
+            <!-- Dashboard Home -->
+            <li class="nav-item">
+                <a href="/dashboard" class="nav-link <%= activePage === 'dashboard' ? 'active' : '' %>">
+                    <i class="bi bi-speedometer2"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <!-- My Profile -->
+            <li class="nav-item">
+                <a href="/profile" class="nav-link <%= activePage === 'profile' ? 'active' : '' %>">
+                    <i class="bi bi-person-circle"></i>
+                    <span>My Profile</span>
+                </a>
+            </li>
+
+            <!-- Saved Scholarships -->
+            <li class="nav-item">
+                <a href="/saved-scholarships" class="nav-link <%= activePage === 'saved' ? 'active' : '' %>">
+                    <i class="bi bi-bookmark-heart"></i>
+                    <span>Saved Scholarships</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <li class="nav-divider"></li>
+
+            <!-- Logout -->
+            <li class="nav-item">
+                <form action="/logout" method="POST" class="d-inline w-100">
+                    <button type="submit" class="nav-link logout-btn">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span>Logout</span>
+                    </button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+        <div class="user-info-mini">
+            <div class="avatar-mini">
+                <%= currentUser.FirstName.charAt(0).toUpperCase() %>
+            </div>
+            <div class="user-details-mini">
+                <p class="mb-0 fw-semibold"><%= currentUser.FirstName %> <%= currentUser.LastName %></p>
+                <small class="text-muted"><%= currentUser.Email %></small>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<!-- Overlay for mobile -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>

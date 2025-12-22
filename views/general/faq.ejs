@@ -1,0 +1,127 @@
+<%- layout("layouts/boilerplate.ejs") %>
+
+<main style="margin-top: 2rem">
+  <div class="faq-container">
+    <h2>Frequently Asked Questions</h2>
+    <p class="sub">Find answers to common questions about scholarships</p>
+
+    <!-- FAQ Item 1 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        How do I find scholarships that match my profile?
+      </div>
+      <div class="faq-answer">
+        <p>
+          Simply create an account and complete your profile with details like
+          education level, course, state, caste, and other relevant information.
+          Our smart algorithm will recommend scholarships that best match your
+          eligibility criteria.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ Item 2 -->
+    <div class="faq-item">
+      <div class="faq-question">Is there any fee to use this platform?</div>
+      <div class="faq-answer">
+        <p>
+          No, ScholarFind is completely free to use. We do not charge any fees
+          for browsing, searching, or saving scholarships. Our mission is to
+          make education accessible to all.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ Item 3 -->
+    <div class="faq-item">
+      <div class="faq-question">How often are scholarships updated?</div>
+      <div class="faq-answer">
+        <p>
+          We update our scholarship database regularly. New scholarships are
+          added as soon as they are announced, and deadlines are updated in
+          real-time to ensure you never miss an opportunity.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ Item 4 -->
+    <div class="faq-item">
+      <div class="faq-question">Can I apply for multiple scholarships?</div>
+      <div class="faq-answer">
+        <p>
+          Yes, you can apply for as many scholarships as you are eligible for.
+          There is no limit on the number of applications. We encourage you to
+          apply to all relevant scholarships to maximize your chances.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ Item 5 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        What documents do I need to apply for scholarships?
+      </div>
+      <div class="faq-answer">
+        <p>
+          Common documents include mark sheets, income certificate, caste
+          certificate (if applicable), Aadhar card, bank details, and
+          passport-size photographs. Specific requirements vary by scholarship
+          and are listed in each scholarship's details page.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        How will I know my scholarship is approved?
+      </div>
+      <div class="faq-answer">
+        <p>
+          Scholarship providers typically send notifications via email or SMS.
+          You should also check the official scholarship portal regularly for
+          status updates. We recommend saving important scholarships to track
+          their deadlines.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">What should I do if I miss the deadline?</div>
+      <div class="faq-answer">
+        <p>
+          Unfortunately, if you miss a scholarship deadline, you cannot apply
+          for that cycle. However, many scholarships are offered annually. Save
+          the scholarship and set reminders for the next application cycle.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Can I edit my profile after registration?</div>
+      <div class="faq-answer">
+        <p>
+          Yes, you can edit your profile at any time from your dashboard.
+          Keeping your profile updated ensures you receive the most accurate
+          scholarship recommendations.
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  const faqs = document.querySelectorAll(".faq-item");
+
+  faqs.forEach((faq) => {
+    faq.addEventListener("click", () => {
+      faq.classList.toggle("active");
+
+      let answer = faq.querySelector(".faq-answer");
+      if (faq.classList.contains("active")) {
+        answer.style.maxHeight = answer.scrollHeight + "px";
+      } else {
+        answer.style.maxHeight = null;
+      }
+    });
+  });
+</script>

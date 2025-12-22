@@ -1,0 +1,258 @@
+<%- layout("layouts/boilerplate.ejs") %>
+<!-- navbar includeed in boilerplate  -->
+
+<!-- home page content starts here  -->
+
+<!-- first section -->
+<div class="header-2">
+  <div class="big-div">
+    <div class="div1">
+      <div class="hero-badge">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>Trusted by 100,000+ Students</span>
+      </div>
+      <p class="hero-eyebrow">Empowering Students with the Right Scholarship at the Right Time</p>
+      <p class="hero-title">
+        Discover scholarships from Class 1 to Post-Graduation. Find the perfect
+        financial aid that matches your academic journey and career goals.
+      </p>
+
+      <div class="header-2-nav">
+        <a href="/scholarships" class="hero-primary-btn">
+          Explore Scholarship <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <button class="hero-secondary-btn">Check Eligibility</button>
+      </div>
+
+      <div class="header-2-data">
+        <div class="div-scholarship">
+          <p class="metric-value metric-blue">500+</p>
+          <p class="metric-label">Scholarships</p>
+        </div>
+        <div class="div-disbursed">
+          <p class="metric-value metric-purple">₹50Cr+</p>
+          <p class="metric-label">Disbursed</p>
+        </div>
+        <div class="students-helped">
+          <p class="metric-value metric-green">100K+</p>
+          <p class="metric-label">Students Helped</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="div2">
+      <div class="hero-image-frame">
+        <img src="../Assets/main_img.jpg" alt="Graduates celebrating" class="hero-image" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scholarship section -->
+
+<main>
+  <div id="popupOverlay" class="overlay"></div>
+
+  <!-- Popup Box -->
+  <div id="popupBox" class="popup">
+    <button id="closePopup" class="close-btn">&times;</button>
+    <h2 id="popupTitle">Scholarship Details</h2>
+    <div class="popup-content">
+      <div class="popup-detail">
+        <strong>Type:</strong> <span id="popupType"></span>
+      </div>
+      <div class="popup-detail">
+        <strong>Amount:</strong> <span id="popupAmount"></span>
+      </div>
+      <div class="popup-detail">
+        <strong>Deadline:</strong> <span id="popupDeadline"></span>
+      </div>
+      <div class="popup-detail">
+        <strong>Region:</strong> <span id="popupRegion"></span>
+      </div>
+      <div class="popup-detail">
+        <strong>About:</strong>
+        <p id="popupAbout"></p>
+      </div>
+      <div class="popup-detail">
+        <strong>Eligibility:</strong>
+        <p id="popupEligibility"></p>
+      </div>
+      <div class="popup-detail">
+        <strong>Benefits:</strong>
+        <p id="popupBenefits"></p>
+      </div>
+      <div class="popup-detail">
+        <strong>Required Documents:</strong>
+        <p id="popupDocuments"></p>
+      </div>
+      <div class="popup-detail">
+        <strong>Education:</strong> <span id="popupEducation"></span>
+      </div>
+      <div class="popup-detail">
+        <strong>Gender:</strong> <span id="popupGender"></span>
+      </div>
+      <div class="popup-detail">
+        <strong>Religion:</strong> <span id="popupReligion"></span>
+      </div>
+      <div class="popup-detail">
+        <strong>Course Category:</strong> <span id="popupCourseCategory"></span>
+      </div>
+      <div class="popup-detail">
+        <strong>State:</strong> <span id="popupState"></span>
+      </div>
+    </div>
+    <div class="popup-buttons">
+      <button id="confirmApply" class="btn-confirm">Apply Now</button>
+      <button id="cancelApply" class="btn-cancel">Cancel</button>
+    </div>
+  </div>
+
+  <div class="section1">
+    <div class="section1-header">
+      <h3>Trending Scholarships</h3>
+      <p>Most popular scholarships applied by students this month</p>
+    </div>
+    <div class="section1-cards-div">
+      <% for(let scholarship of scholarships) { %>
+      <div class="section1-card">
+        <div class="section1-article1">
+          <div class="info1"><%= scholarship.type %></div>
+          <div class="info2">
+            <i class="fa-solid fa-arrow-trend-up"></i><span>Trending</span>
+          </div>
+        </div>
+        <div class="section1-article2">
+          <h5><%= scholarship.title %></h5>
+          <p class="i1">
+            <i class="fa-solid fa-indian-rupee-sign"></i> Amount : <%=
+            scholarship.Amount %>
+          </p>
+          <p class="i1">
+            <i class="fa-regular fa-calendar"></i> Deadline : <%=
+            scholarship.Deadline.toLocaleDateString("en-GB") %>
+          </p>
+          <p class="i1">
+            Eligibility : <%= scholarship.Eligibility.substring(0, 50) %>...
+          </p>
+        </div>
+        <div class="section3-article3">
+          <button
+            style="width: 100%"
+            class="apply-now-btn"
+            data-link="<%= scholarship.ApplyLink %>"
+            data-title="<%= scholarship.title %>"
+            data-type="<%= scholarship.type %>"
+            data-amount="<%= scholarship.Amount %>"
+            data-about="<%= scholarship.About %>"
+            data-eligibility="<%= scholarship.Eligibility %>"
+            data-deadline="<%= scholarship.Deadline.toLocaleDateString('en-GB') %>"
+            data-benefits="<%= scholarship.Benefits %>"
+            data-region="<%= scholarship.Region %>"
+            data-documents="<%= scholarship.Documents %>"
+            data-Gender="<%= scholarship.Gender %>"
+            data-Religion="<%= scholarship.Religion %>"
+            data-CourseCategory="<%= scholarship.CourseCategory %>"
+            data-State="<%= scholarship.State %>"
+            data-Education="<%= scholarship.Education %>"
+          >
+            Apply Now
+          </button>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</main>
+
+<!-- news section -->
+
+<div class="section2">
+  <div class="section2-1">
+    <h5>Latest News & Updates</h5>
+    <p>
+      Stay informed about the latest scholarship announcements, deadlines, and
+      education news
+    </p>
+
+    <div class="section2-2">
+      <!-- News cards injected via api.js -->
+    </div>
+  </div>
+</div>
+
+<!-- success stories section -->
+
+<section class="section3">
+  <div class="success-header">
+    <p class="tag">✔ Success Stories</p>
+    <h2>Students Who Secured Scholarships</h2>
+    <p class="subtext">
+      Real stories from students whose lives were transformed by scholarships
+    </p>
+  </div>
+
+  <% if (reviews && reviews.length > 0) { %>
+    <div class="success-grid">
+      <% reviews.forEach(review => { %>
+        <div class="success-card">
+          <div class="s-top">
+            <div class="reviewer-avatar"><%= review.Name && review.Name.length > 0 ? review.Name.charAt(0).toUpperCase() : '?' %></div>
+            <div>
+              <h3><%= review.Name || 'Anonymous' %></h3>
+              <a href="#"><%= review.scholarship %></a>
+            </div>
+            <span class="amount">₹<%= review.Amount && review.Amount.toLocaleString ? review.Amount.toLocaleString() : '0' %></span>
+          </div>
+          <p class="point">
+            <%= review.About || 'No description provided' %>
+          </p>
+          <p class="quote">
+            "<%= review.Discription || 'No quote provided' %>"
+          </p>
+        </div>
+      <% }); %>
+    </div>
+  <% } else { %>
+    <div class="no-reviews-success">
+      <i class="fa-regular fa-comment-dots"></i>
+      <p>No success stories shared yet. Be the first to share your experience!</p>
+    </div>
+  <% } %>
+
+  <div class="share-box">
+    
+    <p>Want to share your success story?</p>
+    <a href="/reviews">
+    <button class="share-btn" style="margin-top: 1rem">
+      Submit Your Story
+    </button>
+    </a>
+  </div>
+</section>
+<script>
+  const cardsPerPage = 4;
+  const cards = document.querySelectorAll(".section1-card");
+  const dots = document.querySelectorAll(".pagination-dots .dot");
+  const totalPages = Math.ceil(cards.length / cardsPerPage);
+
+  function showPage(pageIndex) {
+    // Hide all cards
+    cards.forEach((card) => card.classList.add("hidden"));
+
+    // Show cards for current page
+    const start = pageIndex * cardsPerPage;
+    const end = start + cardsPerPage;
+    for (let i = start; i < end && i < cards.length; i++) {
+      cards[i].classList.remove("hidden");
+    }
+
+    // Update dots
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("active", index === pageIndex);
+    });
+  }
+
+  // Initialize first page
+  showPage(0);
+</script>

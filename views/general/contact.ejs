@@ -1,0 +1,67 @@
+<%- layout("layouts/boilerplate.ejs") %>
+<main>
+  <div class="contact-section">
+    <h1>Get in Touch</h1>
+    <p class="subtitle">Have questions? We're here to help!</p>
+
+    <div class="contact-container">
+      <!-- Send Message Form -->
+      <div class="card">
+        <h2>Send us a Message</h2>
+        <form>
+          <input type="text" placeholder="Your full name" required />
+          <input type="email" placeholder="your@email.com" required />
+          <select required>
+            <option value="" disabled selected>Select a subject</option>
+            <option value="general">General Inquiry</option>
+            <option value="support">Support</option>
+            <option value="feedback">Feedback</option>
+          </select>
+          <textarea placeholder="Type your message here..." required></textarea>
+          <button type="submit">✈ Send Message</button>
+        </form>
+      </div>
+
+      <!-- Get in Touch -->
+      <div class="card">
+        <h2>Get in Touch</h2>
+        <div class="contact-info">
+          <div class="info-item">
+            <span class="icon">📧</span>
+            <div>
+              <strong>Email</strong><br />
+              support@scholarfind.in<br />
+              info@scholarfind.in
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="icon">📞</span>
+            <div>
+              <strong>Phone</strong><br />
+              +91 1800-XXX-XXXX (Toll Free)<br />
+              Mon-Fri: 9:00 AM - 6:00 PM IST
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="icon">📍</span>
+            <div>
+              <strong>Address</strong><br />
+              ScholarFind Pvt. Ltd.<br />
+              123 Education Hub,<br />
+              New Delhi - 110001, India
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-response">
+          <strong>Quick Response</strong>
+          <p>We typically respond within 24 hours during business days.</p>
+          <p>
+            For urgent scholarship deadline queries, please mention "URGENT" in
+            your subject line.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

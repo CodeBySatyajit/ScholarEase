@@ -1,0 +1,239 @@
+<%- layout("layouts/boilerplate.ejs") %>
+
+<div class="add-scholarship-container">
+  <h2><i class="fa-solid fa-plus"></i> Add New Scholarship</h2>
+
+  <form action="/admin/add-scholarship" method="POST">
+    <div class="form-group">
+      <label for="title"
+        >Scholarship Title <span class="required">*</span></label
+      >
+      <input
+        type="text"
+        id="title"
+        name="title"
+        required
+        placeholder="e.g., National Merit Scholarship"
+      />
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="type">Type <span class="required">*</span></label>
+        <select
+          class="form-control form-control-lg"
+          id="type"
+          name="type"
+          required
+        >
+          <option value="" disabled selected>Select scholarship type</option>
+          <option value="government">Government</option>
+          <option value="private">Private</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="Amount">Amount <span class="required">*</span></label>
+        <input
+          type="number"
+          id="Amount"
+          name="Amount"
+          required
+          placeholder="e.g., ₹50,000"
+        />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="Region">Region <span class="required">*</span></label>
+        <input
+          type="text"
+          id="Region"
+          name="Region"
+          required
+          placeholder="e.g., National, State-specific"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="Deadline">Deadline <span class="required">*</span></label>
+        <input type="date" id="Deadline" name="Deadline" required />
+      </div>
+    </div>
+
+    <div class="form-group form-full">
+      <label for="About">About <span class="required">*</span></label>
+      <textarea
+        id="About"
+        name="About"
+        required
+        placeholder="Describe the scholarship..."
+      ></textarea>
+    </div>
+
+    <div class="form-group form-full">
+      <label for="Eligibility"
+        >Eligibility <span class="required">*</span></label
+      >
+      <textarea
+        id="Eligibility"
+        name="Eligibility"
+        required
+        placeholder="List eligibility criteria..."
+      ></textarea>
+    </div>
+
+    <div class="form-group form-full">
+      <label for="Benefits">Benefits <span class="required">*</span></label>
+      <textarea
+        id="Benefits"
+        name="Benefits"
+        required
+        placeholder="Describe the benefits..."
+      ></textarea>
+    </div>
+
+    <div class="form-group form-full">
+      <label for="Documents"
+        >Required Documents <span class="required">*</span></label
+      >
+      <textarea
+        id="Documents"
+        name="Documents"
+        required
+        placeholder="List required documents..."
+      ></textarea>
+    </div>
+
+    <div class="form-group form-full">
+      <label for="Education">Education Level</label>
+      <select
+        class="form-control form-control-lg"
+        id="Education"
+        name="Education"
+      >
+        <option value="" disabled selected>Select education level</option>
+        <option value="class 1">Class 1</option>
+        <option value="class 2">Class 2</option>
+        <option value="class 3">Class 3</option>
+        <option value="class 4">Class 4</option>
+        <option value="class 5">Class 5</option>
+        <option value="class 6">Class 6</option>
+        <option value="class 7">Class 7</option>
+        <option value="class 8">Class 8</option>
+        <option value="class 9">Class 9</option>
+        <option value="class 10">Class 10</option>
+        <option value="class 11">Class 11</option>
+        <option value="class 12">Class 12</option>
+        <option value="diploma">Diploma</option>
+        <option value="graduation">Graduation</option>
+        <option value="post graduation">Post Graduation</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="Gender">Gender</label>
+        <select class="form-control form-control-lg" id="Gender" name="Gender">
+          <option value="" disabled selected>Select gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="both">Both</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="Religion">Religion</label>
+        <select
+          class="form-control form-control-lg"
+          id="Religion"
+          name="Religion"
+        >
+          <option value="" disabled selected>Select religion</option>
+          <option value="hindu">Hindu</option>
+          <option value="muslim">Muslim</option>
+          <option value="christian">Christian</option>
+          <option value="sikh">Sikh</option>
+          <option value="other">Other</option>
+          <option value="all">All Religions</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="CourseCategory">Course Category</label>
+        <select
+          class="form-control form-control-lg"
+          id="CourseCategory"
+          name="CourseCategory"
+        >
+          <option value="" disabled selected>Select course category</option>
+          <option value="engineering">Engineering</option>
+          <option value="medical">Medical</option>
+          <option value="arts">Arts</option>
+          <option value="science">Science</option>
+          <option value="management">Management</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="State">State</label>
+        <select class="form-control form-control-lg" id="State" name="State">
+          <option value="" disabled selected>Select state</option>
+          <option value="andhra pradesh">Andhra Pradesh</option>
+          <option value="assam">Assam</option>
+          <option value="bihar">Bihar</option>
+          <option value="karnataka">Karnataka</option>
+          <option value="maharashtra">Maharashtra</option>
+          <option value="tamil nadu">Tamil Nadu</option>
+          <option value="uttar pradesh">Uttar Pradesh</option>
+          <option value="west bengal">West Bengal</option>
+          <option value="delhi">Delhi</option>
+          <option value="gujarat">Gujarat</option>
+          <option value="rajasthan">Rajasthan</option>
+          <option value="telangana">Telangana</option>
+          <option vlaue="punjab">Punjab</option>
+          <option value="Madhaya pradesh">Madhya Pradesh</option>
+          <option value="odisha">Odisha</option>
+          <option value="haryana">Haryana</option>
+          <option value="himachal pradesh">Himachal Pradesh</option>
+          <option value="jammu and kashmir">Jammu and Kashmir</option>
+          <option value="jharkhand">Jharkhand</option>
+          <option value="goa">Goa</option>
+          <option value="manipur">Manipur</option>
+          <option value="meghalaya">Meghalaya</option>
+          <option value="mizoram">Mizoram</option>
+          <option value="nagaland">Nagaland</option>
+          <option value="sikkim">Sikkim</option>
+          <option value="tripura">Tripura</option>
+          <option value="uttarakhand">Uttarakhand</option>
+          <option value="west bengal">West Bengal</option>
+          <option value="all">All States</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group form-full">
+      <label for="ApplyLink"
+        >Application Link <span class="required">*</span></label
+      >
+      <input
+        type="url"
+        id="ApplyLink"
+        name="ApplyLink"
+        required
+        placeholder="https://..."
+      />
+    </div>
+
+    <div class="btn-group">
+      <button type="submit" class="btn btn-submit">
+        <i class="fa-solid fa-check"></i> Add Scholarship
+      </button>
+      <a href="/admin/dashboard" class="btn btn-cancel">
+        <i class="fa-solid fa-times"></i> Cancel
+      </a>
+    </div>
+  </form>
+</div>

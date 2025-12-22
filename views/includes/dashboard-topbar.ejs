@@ -1,0 +1,21 @@
+<!-- Dashboard Top Navbar -->
+<nav class="dashboard-topbar">
+    <div class="topbar-left">
+        <button class="btn btn-link d-lg-none me-3" id="toggleSidebar">
+            <i class="bi bi-list fs-4"></i>
+        </button>
+        <h4 class="mb-0 page-title">
+            <% if (activePage === 'dashboard') { %>
+                Dashboard
+            <% } else if (activePage === 'profile') { %>
+                My Profile
+            <% } else if (activePage === 'saved') { %>
+                Saved Scholarships
+            <% } else { %>
+                Dashboard
+            <% } %>
+        </h4>
+    </div>
+
+
+</nav>
