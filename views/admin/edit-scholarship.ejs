@@ -124,6 +124,7 @@
         name="Education"  
         value="<%= scholarship.Education %>"
       >
+        <option value="all" <%= scholarship.Education === 'all' ? 'selected' : '' %>>All</option>
         <option value="class 1" <%= scholarship.Education === 'class 1' ? 'selected' : '' %>>Class 1</option>
         <option value="class 2" <%= scholarship.Education === 'class 2' ? 'selected' : '' %>>Class 2</option>
         <option value="class 3" <%= scholarship.Education === 'class 3' ? 'selected' : '' %>>Class 3</option>
@@ -230,7 +231,7 @@
           <option value="uttar pradesh" <%= scholarship.State === 'uttar pradesh' ? 'selected' : '' %>>Uttar Pradesh</option>
           <option value="uttarakhand" <%= scholarship.State === 'uttarakhand' ? 'selected' : '' %>>Uttarakhand</option>
           <option value="west bengal" <%= scholarship.State === 'west bengal' ? 'selected' : '' %>>West Bengal</option>
-          <option value="all india" <%= scholarship.State === 'all india' ? 'selected' : '' %>>All India</option>
+          <option value="all" <%= scholarship.State === 'all' ? 'selected' : '' %>>All India</option>
       </select>
     </div>
 
