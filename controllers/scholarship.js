@@ -79,8 +79,8 @@ module.exports.renderScholarshipForm = async (req, res) => {
             }
         }
         
-        // Execute the query with all filters applied
-        const scholarshipsList = await scholarships.find(query);
+        // Execute the query with all filters applied, sorted by latest updates first
+        const scholarshipsList = await scholarships.find(query).sort({ updatedAt: -1 });
         
         // Render the template with filtered scholarships and applied filters
         res.render("scholarships/scholarships.ejs", { 
@@ -96,7 +96,7 @@ module.exports.renderScholarshipForm = async (req, res) => {
 
 module.exports.homePage =  async (req, res) => {
     try {
-        const scholarshipsList = await scholarships.find({});
+        const scholarshipsList = await scholarships.find({}).sort({ updatedAt: -1 });
         const reviews = await Review.find({}).limit(4);
         res.render("scholarships/home.ejs", { 
             scholarships: scholarshipsList,
