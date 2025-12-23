@@ -102,6 +102,161 @@
                             </select>
                         </div>
 
+                        <!-- Educational Details Section -->
+                        <div class="col-12">
+                            <hr class="my-4">
+                            <h6 class="mb-3"><i class="bi bi-mortarboard me-2"></i>Educational Details</h6>
+                        </div>
+
+                        <!-- Class/Qualification Dropdown -->
+                        <div class="col-md-6">
+                            <label for="educationClass" class="form-label fw-semibold">
+                                Select Class / Qualification <span class="text-danger">*</span>
+                            </label>
+                            <select class="form-select form-select-lg" id="educationClass" name="education[class]">
+                                <option value="">Select Class</option>
+                                <option value="Class 1" <%= userInfo && userInfo.education && userInfo.education.class === 'Class 1' ? 'selected' : '' %>>Class 1</option>
+                                <option value="Class 2" <%= userInfo && userInfo.education && userInfo.education.class === 'Class 2' ? 'selected' : '' %>>Class 2</option>
+                                <option value="Class 3" <%= userInfo && userInfo.education && userInfo.education.class === 'Class 3' ? 'selected' : '' %>>Class 3</option>
+                                <option value="Class 4" <%= userInfo && userInfo.education && userInfo.education.class === 'Class 4' ? 'selected' : '' %>>Class 4</option>
+                                <option value="Class 5" <%= userInfo && userInfo.education && userInfo.education.class === 'Class 5' ? 'selected' : '' %>>Class 5</option>
+                                <option value="Class 6" <%= userInfo && userInfo.education && userInfo.education.class === 'Class 6' ? 'selected' : '' %>>Class 6</option>
+                                <option value="Class 7" <%= userInfo && userInfo.education && userInfo.education.class === 'Class 7' ? 'selected' : '' %>>Class 7</option>
+                                <option value="Class 8" <%= userInfo && userInfo.education && userInfo.education.class === 'Class 8' ? 'selected' : '' %>>Class 8</option>
+                                <option value="Class 9" <%= userInfo && userInfo.education && userInfo.education.class === 'Class 9' ? 'selected' : '' %>>Class 9</option>
+                                <option value="Class 10" <%= userInfo && userInfo.education && userInfo.education.class === 'Class 10' ? 'selected' : '' %>>Class 10</option>
+                                <option value="Class 11" <%= userInfo && userInfo.education && userInfo.education.class === 'Class 11' ? 'selected' : '' %>>Class 11</option>
+                                <option value="Class 12" <%= userInfo && userInfo.education && userInfo.education.class === 'Class 12' ? 'selected' : '' %>>Class 12</option>
+                                <option value="Diploma" <%= userInfo && userInfo.education && userInfo.education.class === 'Diploma' ? 'selected' : '' %>>Diploma</option>
+                                <option value="Graduation" <%= userInfo && userInfo.education && userInfo.education.class === 'Graduation' ? 'selected' : '' %>>Graduation</option>
+                                <option value="Post Graduation" <%= userInfo && userInfo.education && userInfo.education.class === 'Post Graduation' ? 'selected' : '' %>>Post Graduation</option>
+                            </select>
+                            <small class="text-muted" id="educationHelper">Select class to enter marks details</small>
+                        </div>
+
+                        <!-- Academic Details Container (Initially Hidden) -->
+                        <div class="col-12" id="academicDetailsContainer" style="display: none;">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="educationStream" class="form-label fw-semibold">
+                                        Stream / Course Name
+                                    </label>
+                                    <input type="text" 
+                                           class="form-control form-control-lg" 
+                                           id="educationStream" 
+                                           name="education[stream]" 
+                                           value="<%= userInfo && userInfo.education && userInfo.education.stream ? userInfo.education.stream : '' %>" 
+                                           placeholder="e.g., Science, Commerce, Arts, Computer Science">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="educationBoard" class="form-label fw-semibold">
+                                        Board / University
+                                    </label>
+                                    <input type="text" 
+                                           class="form-control form-control-lg" 
+                                           id="educationBoard" 
+                                           name="education[board]" 
+                                           value="<%= userInfo && userInfo.education && userInfo.education.board ? userInfo.education.board : '' %>" 
+                                           placeholder="e.g., CBSE, State Board, University Name">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="educationInstitution" class="form-label fw-semibold">
+                                        School / College Name
+                                    </label>
+                                    <input type="text" 
+                                           class="form-control form-control-lg" 
+                                           id="educationInstitution" 
+                                           name="education[institution]" 
+                                           value="<%= userInfo && userInfo.education && userInfo.education.institution ? userInfo.education.institution : '' %>" 
+                                           placeholder="Enter institution name">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="educationPassingYear" class="form-label fw-semibold">
+                                        Passing Year
+                                    </label>
+                                    <input type="text" 
+                                           class="form-control form-control-lg" 
+                                           id="educationPassingYear" 
+                                           name="education[passingYear]" 
+                                           value="<%= userInfo && userInfo.education && userInfo.education.passingYear ? userInfo.education.passingYear : '' %>" 
+                                           placeholder="e.g., 2024" 
+                                           pattern="[0-9]{4}">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="educationPercentage" class="form-label fw-semibold">
+                                        Percentage / CGPA
+                                    </label>
+                                    <input type="text" 
+                                           class="form-control form-control-lg" 
+                                           id="educationPercentage" 
+                                           name="education[percentage]" 
+                                           value="<%= userInfo && userInfo.education && userInfo.education.percentage ? userInfo.education.percentage : '' %>" 
+                                           placeholder="e.g., 85% or 8.5 CGPA">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="educationStatus" class="form-label fw-semibold">
+                                        Academic Status
+                                    </label>
+                                    <select class="form-select form-select-lg" id="educationStatus" name="education[academicStatus]">
+                                        <option value="">Select Status</option>
+                                        <option value="Studying" <%= userInfo && userInfo.education && userInfo.education.academicStatus === 'Studying' ? 'selected' : '' %>>Studying</option>
+                                        <option value="Passed" <%= userInfo && userInfo.education && userInfo.education.academicStatus === 'Passed' ? 'selected' : '' %>>Passed</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="educationCategory" class="form-label fw-semibold">
+                                        Category
+                                    </label>
+                                    <select class="form-select form-select-lg" id="educationCategory" name="education[category]">
+                                        <option value="">Select Category</option>
+                                        <option value="General" <%= userInfo && userInfo.education && userInfo.education.category === 'General' ? 'selected' : '' %>>General</option>
+                                        <option value="Open" <%= userInfo && userInfo.education && userInfo.education.category === 'Open' ? 'selected' : '' %>>Open</option>
+                                        <option value="EWS" <%= userInfo && userInfo.education && userInfo.education.category === 'EWS' ? 'selected' : '' %>>EWS</option>
+                                        <option value="OBC" <%= userInfo && userInfo.education && userInfo.education.category === 'OBC' ? 'selected' : '' %>>OBC</option>
+                                        <option value="OBC-NCL" <%= userInfo && userInfo.education && userInfo.education.category === 'OBC-NCL' ? 'selected' : '' %>>OBC - Non Creamy Layer</option>
+                                        <option value="OBC-CL" <%= userInfo && userInfo.education && userInfo.education.category === 'OBC-CL' ? 'selected' : '' %>>OBC - Creamy Layer</option>
+                                        <option value="SEBC" <%= userInfo && userInfo.education && userInfo.education.category === 'SEBC' ? 'selected' : '' %>>SEBC</option>
+                                        <option value="SC" <%= userInfo && userInfo.education && userInfo.education.category === 'SC' ? 'selected' : '' %>>SC</option>
+                                        <option value="ST" <%= userInfo && userInfo.education && userInfo.education.category === 'ST' ? 'selected' : '' %>>ST</option>
+                                        <option value="VJNT" <%= userInfo && userInfo.education && userInfo.education.category === 'VJNT' ? 'selected' : '' %>>VJNT</option>
+                                        <option value="NT-A" <%= userInfo && userInfo.education && userInfo.education.category === 'NT-A' ? 'selected' : '' %>>NT-A</option>
+                                        <option value="NT-B" <%= userInfo && userInfo.education && userInfo.education.category === 'NT-B' ? 'selected' : '' %>>NT-B</option>
+                                        <option value="NT-C" <%= userInfo && userInfo.education && userInfo.education.category === 'NT-C' ? 'selected' : '' %>>NT-C</option>
+                                        <option value="NT-D" <%= userInfo && userInfo.education && userInfo.education.category === 'NT-D' ? 'selected' : '' %>>NT-D</option>
+                                        <option value="SBC" <%= userInfo && userInfo.education && userInfo.education.category === 'SBC' ? 'selected' : '' %>>SBC</option>
+                                        <option value="Minority" <%= userInfo && userInfo.education && userInfo.education.category === 'Minority' ? 'selected' : '' %>>Minority</option>
+                                        <option value="Other" <%= userInfo && userInfo.education && userInfo.education.category === 'Other' ? 'selected' : '' %>>Other</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="educationIncome" class="form-label fw-semibold">
+                                        Income Range (Annual) <span class="text-muted">(Optional)</span>
+                                    </label>
+                                    <select class="form-select form-select-lg" id="educationIncome" name="education[incomeRange]">
+                                        <option value="">Select Income Range</option>
+                                        <option value="Below 1 Lakh" <%= userInfo && userInfo.education && userInfo.education.incomeRange === 'Below 1 Lakh' ? 'selected' : '' %>>Below ₹1 Lakh</option>
+                                        <option value="1-3 Lakhs" <%= userInfo && userInfo.education && userInfo.education.incomeRange === '1-3 Lakhs' ? 'selected' : '' %>>₹1-3 Lakhs</option>
+                                        <option value="3-5 Lakhs" <%= userInfo && userInfo.education && userInfo.education.incomeRange === '3-5 Lakhs' ? 'selected' : '' %>>₹3-5 Lakhs</option>
+                                        <option value="5-8 Lakhs" <%= userInfo && userInfo.education && userInfo.education.incomeRange === '5-8 Lakhs' ? 'selected' : '' %>>₹5-8 Lakhs</option>
+                                        <option value="Above 8 Lakhs" <%= userInfo && userInfo.education && userInfo.education.incomeRange === 'Above 8 Lakhs' ? 'selected' : '' %>>Above ₹8 Lakhs</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Location Details -->
+                        <div class="col-12">
+                            <hr class="my-4">
+                            <h6 class="mb-3"><i class="bi bi-geo-alt me-2"></i>Location Details</h6>
+                        </div>
+
                         <div class="col-md-6">
                             <label for="state" class="form-label fw-semibold">
                                 State
@@ -126,6 +281,55 @@
                                    placeholder="e.g., Mumbai">
                         </div>
                     </div>
+
+                    <!-- JavaScript for Dynamic Form Behavior -->
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const classDropdown = document.getElementById('educationClass');
+                            const academicDetailsContainer = document.getElementById('academicDetailsContainer');
+                            const helperText = document.getElementById('educationHelper');
+
+                            // Function to toggle academic details visibility
+                            function toggleAcademicDetails() {
+                                const selectedClass = classDropdown.value;
+                                
+                                if (selectedClass && selectedClass !== '') {
+                                    // Show academic details with smooth animation
+                                    academicDetailsContainer.style.display = 'block';
+                                    setTimeout(() => {
+                                        academicDetailsContainer.style.opacity = '1';
+                                        academicDetailsContainer.style.transform = 'translateY(0)';
+                                    }, 10);
+                                    helperText.textContent = 'Fill in your academic details below';
+                                    helperText.classList.remove('text-muted');
+                                    helperText.classList.add('text-success');
+                                } else {
+                                    // Hide academic details
+                                    academicDetailsContainer.style.opacity = '0';
+                                    academicDetailsContainer.style.transform = 'translateY(-10px)';
+                                    setTimeout(() => {
+                                        academicDetailsContainer.style.display = 'none';
+                                    }, 300);
+                                    helperText.textContent = 'Select class to enter marks details';
+                                    helperText.classList.remove('text-success');
+                                    helperText.classList.add('text-muted');
+                                }
+                            }
+
+                            // Initialize container styles for animation
+                            academicDetailsContainer.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                            academicDetailsContainer.style.opacity = '0';
+                            academicDetailsContainer.style.transform = 'translateY(-10px)';
+
+                            // Check on page load if class is already selected (for prefill)
+                            if (classDropdown.value && classDropdown.value !== '') {
+                                toggleAcademicDetails();
+                            }
+
+                            // Listen for changes on the class dropdown
+                            classDropdown.addEventListener('change', toggleAcademicDetails);
+                        });
+                    </script>
 
                     <!-- Submit Button -->
                     <div class="mt-4 d-flex gap-2">
@@ -154,12 +358,14 @@
                 <div class="text-start mt-4">
                     <h6 class="text-muted mb-3">Profile Strength</h6>
                     <% 
-                        let completionPercentage = 40;
-                        if (userInfo && userInfo.dateOfBirth) completionPercentage += 10;
-                        if (userInfo && userInfo.gender) completionPercentage += 10;
-                        if (userInfo && userInfo.educationLevel) completionPercentage += 20;
-                        if (userInfo && userInfo.state) completionPercentage += 10;
-                        if (userInfo && userInfo.city) completionPercentage += 10;
+                        let completionPercentage = 40; // Base for name, email, mobile
+                        if (userInfo && userInfo.dateOfBirth) completionPercentage += 8;
+                        if (userInfo && userInfo.gender) completionPercentage += 7;
+                        if (userInfo && userInfo.educationLevel) completionPercentage += 10;
+                        if (userInfo && userInfo.education && userInfo.education.class) completionPercentage += 15;
+                        if (userInfo && userInfo.education && userInfo.education.percentage) completionPercentage += 10;
+                        if (userInfo && userInfo.state) completionPercentage += 5;
+                        if (userInfo && userInfo.city) completionPercentage += 5;
                     %>
                     <div class="progress mb-2" style="height: 8px;">
                         <div class="progress-bar bg-success" 
@@ -181,7 +387,8 @@
                 <ul class="small text-muted mb-0 ps-3">
                     <li class="mb-2">Keep your contact information up to date</li>
                     <li class="mb-2">Complete all fields for better scholarship matches</li>
-                    <li class="mb-2">Education level helps us recommend relevant opportunities</li>
+                    <li class="mb-2">Select your class to unlock detailed educational fields</li>
+                    <li class="mb-2">Academic details help us recommend relevant opportunities</li>
                     <li>Location data helps find local scholarships</li>
                 </ul>
             </div>

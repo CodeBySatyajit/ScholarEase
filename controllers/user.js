@@ -152,7 +152,7 @@ module.exports.renderProfile = async (req, res) => {
 module.exports.updateProfile = async (req, res) => {
     try {
         const userId = req.session.user.id;
-        const { FirstName, LastName, Mobile, dateOfBirth, gender, educationLevel, state, city } = req.body;
+        const { FirstName, LastName, Mobile, dateOfBirth, gender, educationLevel, state, city, education } = req.body;
 
         // Update User model (basic info)
         await User.findByIdAndUpdate(userId, {
@@ -178,6 +178,23 @@ module.exports.updateProfile = async (req, res) => {
         userInfo.educationLevel = educationLevel || '';
         userInfo.state = state || '';
         userInfo.city = city || '';
+
+        // Update education object if provided
+        if (education) {
+            if (!userInfo.education) {
+                userInfo.education = {};
+            }
+            
+            userInfo.education.class = education.class || '';
+            userInfo.education.stream = education.stream || '';
+            userInfo.education.board = education.board || '';
+            userInfo.education.institution = education.institution || '';
+            userInfo.education.passingYear = education.passingYear || '';
+            userInfo.education.percentage = education.percentage || '';
+            userInfo.education.academicStatus = education.academicStatus || '';
+            userInfo.education.category = education.category || '';
+            userInfo.education.incomeRange = education.incomeRange || '';
+        }
 
         await userInfo.save();
 

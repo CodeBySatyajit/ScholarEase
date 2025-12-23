@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const region = btn.getAttribute("data-region");
             const documents = btn.getAttribute("data-documents");
             const gender = btn.getAttribute("data-gender");
-            const religion = btn.getAttribute("data-religion");
+            const category = btn.getAttribute("data-category");
             const courseCategory = btn.getAttribute("data-coursecategory");
             const state = btn.getAttribute("data-state");
 
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("popupBenefits").innerHTML = formatAsList(benefits);
             document.getElementById("popupDocuments").innerHTML = formatAsList(documents);
             document.getElementById("popupGender").textContent = gender || 'N/A';
-            document.getElementById("popupReligion").textContent = religion || 'N/A';
+            document.getElementById("popupCategory").textContent = category || 'N/A';
             document.getElementById("popupCourseCategory").textContent = courseCategory || 'N/A';
             document.getElementById("popupState").textContent = state || 'N/A';
             document.getElementById("popupEducation").textContent = education || 'N/A';

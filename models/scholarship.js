@@ -61,10 +61,14 @@ const scholarshipSchema = new Schema({
         enum : [ 'female', 'both']
     },
 
-    Religion : {
+    Category : {
         type : String,
         required : false,
-        enum : ['muslim', 'hindu', 'christian', 'sikh', 'other', 'all']
+        enum : [
+            'General', 'Open', 'EWS', 'OBC', 'OBC-NCL', 'OBC-CL', 'SEBC',
+            'SC', 'ST', 'VJNT', 'NT-A', 'NT-B', 'NT-C', 'NT-D', 'SBC',
+            'Minority', 'Other', 'All'
+        ]
     },
 
     CourseCategory : {

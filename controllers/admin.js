@@ -62,7 +62,7 @@ module.exports.renderAdminAddForm = (req, res) => {
 
 module.exports.addScholarshipByAdmin = async (req, res) => {
   const scholarships = require("../models/scholarship.js");
-  const { title, type, Amount, About, Eligibility, Deadline, Region, Benefits, Documents, ApplyLink, Gender, Religion, CourseCategory, State , Education} = req.body;
+  const { title, type, Amount, About, Eligibility, Deadline, Region, Benefits, Documents, ApplyLink, Gender, Category, CourseCategory, State , Education} = req.body;
 
   try {
     const newScholarship = new scholarships({
@@ -77,7 +77,7 @@ module.exports.addScholarshipByAdmin = async (req, res) => {
       Documents,
       ApplyLink,
       Gender,
-      Religion,
+      Category,
       CourseCategory,
       State,
       Education
@@ -126,7 +126,7 @@ module.exports.renderAdminEditForm = async (req, res) => {
 module.exports.editScholarshipByAdmin = async (req, res) => {
   const scholarships = require("../models/scholarship.js");
   const { id } = req.params;
-  const { title, type, Amount, About, Eligibility, Deadline, Region, Benefits, Documents, ApplyLink, Gender, Religion, CourseCategory, State, Education } = req.body;
+  const { title, type, Amount, About, Eligibility, Deadline, Region, Benefits, Documents, ApplyLink, Gender, Category, CourseCategory, State, Education } = req.body;
 
   try {
     await scholarships.findByIdAndUpdate(
@@ -143,7 +143,7 @@ module.exports.editScholarshipByAdmin = async (req, res) => {
         Documents,
         ApplyLink,
         Gender,
-        Religion,
+        Category,
         CourseCategory,
         State,
         Education

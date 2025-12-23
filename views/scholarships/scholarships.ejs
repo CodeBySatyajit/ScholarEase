@@ -97,17 +97,27 @@
           </div>
           
           <div class="filter-group">
-            <label>Religion</label>
-            <select name="religion">
+            <label>Category</label>
+            <select name="category">
               <option value="">All</option>
-              <option value="Hindu" <%= filters.religion === 'Hindu' ? 'selected' : '' %>>Hindu</option>
-              <option value="Muslim" <%= filters.religion === 'Muslim' ? 'selected' : '' %>>Muslim</option>
-              <option value="Sikh" <%= filters.religion === 'Sikh' ? 'selected' : '' %>>Sikh</option>
-              <option value="Christian" <%= filters.religion === 'Christian' ? 'selected' : '' %>>Christian</option>
-              <option value="Buddhist" <%= filters.religion === 'Buddhist' ? 'selected' : '' %>>Buddhist</option>
-              <option value="Jain" <%= filters.religion === 'Jain' ? 'selected' : '' %>>Jain</option>
-              <option value="Parsi" <%= filters.religion === 'Parsi' ? 'selected' : '' %>>Parsi</option>
-              <option value="All" <%= filters.religion === 'All' ? 'selected' : '' %>>All</option>
+              <option value="General" <%= filters.category === 'General' ? 'selected' : '' %>>General</option>
+              <option value="Open" <%= filters.category === 'Open' ? 'selected' : '' %>>Open</option>
+              <option value="EWS" <%= filters.category === 'EWS' ? 'selected' : '' %>>EWS</option>
+              <option value="OBC" <%= filters.category === 'OBC' ? 'selected' : '' %>>OBC</option>
+              <option value="OBC-NCL" <%= filters.category === 'OBC-NCL' ? 'selected' : '' %>>OBC - Non Creamy Layer</option>
+              <option value="OBC-CL" <%= filters.category === 'OBC-CL' ? 'selected' : '' %>>OBC - Creamy Layer</option>
+              <option value="SEBC" <%= filters.category === 'SEBC' ? 'selected' : '' %>>SEBC</option>
+              <option value="SC" <%= filters.category === 'SC' ? 'selected' : '' %>>SC</option>
+              <option value="ST" <%= filters.category === 'ST' ? 'selected' : '' %>>ST</option>
+              <option value="VJNT" <%= filters.category === 'VJNT' ? 'selected' : '' %>>VJNT</option>
+              <option value="NT-A" <%= filters.category === 'NT-A' ? 'selected' : '' %>>NT-A</option>
+              <option value="NT-B" <%= filters.category === 'NT-B' ? 'selected' : '' %>>NT-B</option>
+              <option value="NT-C" <%= filters.category === 'NT-C' ? 'selected' : '' %>>NT-C</option>
+              <option value="NT-D" <%= filters.category === 'NT-D' ? 'selected' : '' %>>NT-D</option>
+              <option value="SBC" <%= filters.category === 'SBC' ? 'selected' : '' %>>SBC</option>
+              <option value="Minority" <%= filters.category === 'Minority' ? 'selected' : '' %>>Minority</option>
+              <option value="Other" <%= filters.category === 'Other' ? 'selected' : '' %>>Other</option>
+              <option value="All" <%= filters.category === 'All' ? 'selected' : '' %>>All</option>
             </select>
           </div>
           
@@ -177,7 +187,7 @@
               <strong>Gender:</strong> <span id="popupGender"></span>
             </div>
             <div class="popup-detail">
-              <strong>Religion:</strong> <span id="popupReligion"></span>
+              <strong>Category:</strong> <span id="popupCategory"></span>
             </div>
             <div class="popup-detail">
               <strong>Course Category:</strong> <span id="popupCourseCategory"></span>
@@ -239,7 +249,7 @@
                 data-education="<%= scholarship.Education %>"
                 data-documents="<%= scholarship.Documents %>"
                 data-Gender="<%= scholarship.Gender %>"
-                data-Religion="<%= scholarship.Religion %>"
+                data-Category="<%= scholarship.Category %>"
                 data-CourseCategory="<%= scholarship.CourseCategory %>"
                 data-State="<%= scholarship.State %>"
               >

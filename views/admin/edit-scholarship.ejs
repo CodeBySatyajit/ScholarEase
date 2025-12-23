@@ -158,20 +158,32 @@
     </div>
 
     <div class="form-group">
-      <label for="Religion">Religion</label>
+      <label for="Category">Category</label>
       <select
           class="form-control form-control-lg"
-          id="Religion"
-          name="Religion"
-          value="<%=scholarship.Religion %>"
+          id="Category"
+          name="Category"
+          value="<%=scholarship.Category %>"
         >
-      <option value="" disabled selected>Select religion</option>
-          <option value="hindu" <%= scholarship.Religion === 'hindu' ? 'selected' : '' %>>Hindu</option>
-          <option value="muslim" <%= scholarship.Religion === 'muslim' ? 'selected' : '' %>>Muslim</option>
-          <option value="christian" <%= scholarship.Religion === 'christian' ? 'selected' : '' %>>Christian</option>
-          <option value="sikh" <%= scholarship.Religion === 'sikh' ? 'selected' : '' %>>Sikh</option>
-          <option value="other" <%= scholarship.Religion === 'other' ? 'selected' : '' %>>Other</option>
-          <option value="all" <%= scholarship.Religion === 'all' ? 'selected' : '' %>>All Religions</option>
+      <option value="" disabled>Select category</option>
+          <option value="General" <%= scholarship.Category === 'General' ? 'selected' : '' %>>General</option>
+          <option value="Open" <%= scholarship.Category === 'Open' ? 'selected' : '' %>>Open</option>
+          <option value="EWS" <%= scholarship.Category === 'EWS' ? 'selected' : '' %>>EWS</option>
+          <option value="OBC" <%= scholarship.Category === 'OBC' ? 'selected' : '' %>>OBC</option>
+          <option value="OBC-NCL" <%= scholarship.Category === 'OBC-NCL' ? 'selected' : '' %>>OBC - Non Creamy Layer</option>
+          <option value="OBC-CL" <%= scholarship.Category === 'OBC-CL' ? 'selected' : '' %>>OBC - Creamy Layer</option>
+          <option value="SEBC" <%= scholarship.Category === 'SEBC' ? 'selected' : '' %>>SEBC</option>
+          <option value="SC" <%= scholarship.Category === 'SC' ? 'selected' : '' %>>SC</option>
+          <option value="ST" <%= scholarship.Category === 'ST' ? 'selected' : '' %>>ST</option>
+          <option value="VJNT" <%= scholarship.Category === 'VJNT' ? 'selected' : '' %>>VJNT</option>
+          <option value="NT-A" <%= scholarship.Category === 'NT-A' ? 'selected' : '' %>>NT-A</option>
+          <option value="NT-B" <%= scholarship.Category === 'NT-B' ? 'selected' : '' %>>NT-B</option>
+          <option value="NT-C" <%= scholarship.Category === 'NT-C' ? 'selected' : '' %>>NT-C</option>
+          <option value="NT-D" <%= scholarship.Category === 'NT-D' ? 'selected' : '' %>>NT-D</option>
+          <option value="SBC" <%= scholarship.Category === 'SBC' ? 'selected' : '' %>>SBC</option>
+          <option value="Minority" <%= scholarship.Category === 'Minority' ? 'selected' : '' %>>Minority</option>
+          <option value="Other" <%= scholarship.Category === 'Other' ? 'selected' : '' %>>Other</option>
+          <option value="All" <%= scholarship.Category === 'All' ? 'selected' : '' %>>All</option>
       </select>
     </div>
 

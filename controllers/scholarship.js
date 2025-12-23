@@ -15,7 +15,7 @@ module.exports.renderScholarshipForm = async (req, res) => {
         }
 
         // Extract query parameters for filters and search
-        const { classLevel, gender, state, religion, courseCategory, type, keyword } = req.query;
+        const { classLevel, gender, state, category, courseCategory, type, keyword } = req.query;
         
         // Build dynamic MongoDB query object
         const query = {};
@@ -33,8 +33,8 @@ module.exports.renderScholarshipForm = async (req, res) => {
             query.State = { $regex: new RegExp(`^${state}$`, 'i') };
         }
         
-        if (religion && religion.trim() !== '') {
-            query.Religion = { $regex: new RegExp(`^${religion}$`, 'i') };
+        if (category && category.trim() !== '') {
+            query.Category = { $regex: new RegExp(`^${category}$`, 'i') };
         }
         
         if (courseCategory && courseCategory.trim() !== '') {
@@ -68,7 +68,7 @@ module.exports.renderScholarshipForm = async (req, res) => {
                     { State: { $regex: escapedWord, $options: 'i' } },
                     { type: { $regex: escapedWord, $options: 'i' } },
                     { Gender: { $regex: escapedWord, $options: 'i' } },
-                    { Religion: { $regex: escapedWord, $options: 'i' } },
+                    { Category: { $regex: escapedWord, $options: 'i' } },
                     { Education: { $regex: escapedWord, $options: 'i' } }
                 );
             });
