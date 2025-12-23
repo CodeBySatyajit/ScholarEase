@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const eligibility = btn.getAttribute("data-eligibility");
             const deadline = btn.getAttribute("data-deadline");
             const benefits = btn.getAttribute("data-benefits");
+            const education = btn.getAttribute("data-education");
             const region = btn.getAttribute("data-region");
             const documents = btn.getAttribute("data-documents");
             const gender = btn.getAttribute("data-gender");
@@ -58,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("popupReligion").textContent = religion || 'N/A';
             document.getElementById("popupCourseCategory").textContent = courseCategory || 'N/A';
             document.getElementById("popupState").textContent = state || 'N/A';
-            document.getElementById("popupEducation").textContent = btn.getAttribute("data-education") || 'N/A';
+            document.getElementById("popupEducation").textContent = education || 'N/A';
 
             // Show popup
             if (popup && overlay) {
