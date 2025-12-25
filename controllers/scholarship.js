@@ -65,13 +65,8 @@ module.exports.renderScholarshipForm = async (req, res) => {
                     { Documents: { $regex: escapedWord, $options: 'i' } },
                     { Region: { $regex: escapedWord, $options: 'i' } },
                     { CourseCategory: { $regex: escapedWord, $options: 'i' } },
-                    { State: { $regex: escapedWord, $options: 'i' } },
                     { type: { $regex: escapedWord, $options: 'i' } },
                     { Gender: { $regex: escapedWord, $options: 'i' } },
-                    { Category: { $regex: escapedWord, $options: 'i' } },
-                    { Education: { $regex: escapedWord, $options: 'i' } },
-                    { Amount: { $regex: escapedWord, $options: 'i' } },
-                    { Deadline: { $regex: escapedWord, $options: 'i' } },
                     { Note: { $regex: escapedWord, $options: 'i' } }
                 );
             });
