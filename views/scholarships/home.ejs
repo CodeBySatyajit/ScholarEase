@@ -11,7 +11,9 @@
         <i class="fa-solid fa-graduation-cap"></i>
         <span>Trusted by 100,000+ Students</span>
       </div>
-      <p class="hero-eyebrow">Empowering Students with the Right Scholarship at the Right Time</p>
+      <p class="hero-eyebrow">
+        Empowering Students with the Right Scholarship at the Right Time
+      </p>
       <p class="hero-title">
         Discover scholarships from Class 1 to Post-Graduation. Find the perfect
         financial aid that matches your academic journey and career goals.
@@ -42,7 +44,11 @@
 
     <div class="div2">
       <div class="hero-image-frame">
-        <img src="../Assets/main_img.jpg" alt="Graduates celebrating" class="hero-image" />
+        <img
+          src="../Assets/main_img.jpg"
+          alt="Graduates celebrating"
+          class="hero-image"
+        />
       </div>
     </div>
   </div>
@@ -101,6 +107,10 @@
       <div class="popup-detail">
         <strong>State:</strong> <span id="popupState"></span>
       </div>
+      <div class="popup-detail">
+        <strong>Note:</strong>
+        <p id="popupNote"></p>
+      </div>
     </div>
     <div class="popup-buttons">
       <button id="confirmApply" class="btn-confirm">Apply Now</button>
@@ -155,6 +165,7 @@
             data-CourseCategory="<%= scholarship.CourseCategory %>"
             data-State="<%= scholarship.State %>"
             data-Education="<%= scholarship.Education %>"
+            data-note="<%= scholarship.Note %>"
           >
             Apply Now
           </button>
@@ -193,40 +204,41 @@
   </div>
 
   <% if (reviews && reviews.length > 0) { %>
-    <div class="success-grid">
-      <% reviews.forEach(review => { %>
-        <div class="success-card">
-          <div class="s-top">
-            <div class="reviewer-avatar"><%= review.Name && review.Name.length > 0 ? review.Name.charAt(0).toUpperCase() : '?' %></div>
-            <div>
-              <h3><%= review.Name || 'Anonymous' %></h3>
-              <a href="#"><%= review.scholarship %></a>
-            </div>
-            <span class="amount">₹<%= review.Amount && review.Amount.toLocaleString ? review.Amount.toLocaleString() : '0' %></span>
-          </div>
-          <p class="point">
-            <%= review.About || 'No description provided' %>
-          </p>
-          <p class="quote">
-            "<%= review.Discription || 'No quote provided' %>"
-          </p>
+  <div class="success-grid">
+    <% reviews.forEach(review => { %>
+    <div class="success-card">
+      <div class="s-top">
+        <div class="reviewer-avatar">
+          <%= review.Name && review.Name.length > 0 ?
+          review.Name.charAt(0).toUpperCase() : '?' %>
         </div>
-      <% }); %>
+        <div>
+          <h3><%= review.Name || 'Anonymous' %></h3>
+          <a href="#"><%= review.scholarship %></a>
+        </div>
+        <span class="amount"
+          >₹<%= review.Amount && review.Amount.toLocaleString ?
+          review.Amount.toLocaleString() : '0' %></span
+        >
+      </div>
+      <p class="point"><%= review.About || 'No description provided' %></p>
+      <p class="quote">"<%= review.Discription || 'No quote provided' %>"</p>
     </div>
+    <% }); %>
+  </div>
   <% } else { %>
-    <div class="no-reviews-success">
-      <i class="fa-regular fa-comment-dots"></i>
-      <p>No success stories shared yet. Be the first to share your experience!</p>
-    </div>
+  <div class="no-reviews-success">
+    <i class="fa-regular fa-comment-dots"></i>
+    <p>No success stories shared yet. Be the first to share your experience!</p>
+  </div>
   <% } %>
 
   <div class="share-box">
-    
     <p>Want to share your success story?</p>
     <a href="/reviews">
-    <button class="share-btn" style="margin-top: 1rem">
-      Submit Your Story
-    </button>
+      <button class="share-btn" style="margin-top: 1rem">
+        Submit Your Story
+      </button>
     </a>
   </div>
 </section>

@@ -69,7 +69,10 @@ module.exports.renderScholarshipForm = async (req, res) => {
                     { type: { $regex: escapedWord, $options: 'i' } },
                     { Gender: { $regex: escapedWord, $options: 'i' } },
                     { Category: { $regex: escapedWord, $options: 'i' } },
-                    { Education: { $regex: escapedWord, $options: 'i' } }
+                    { Education: { $regex: escapedWord, $options: 'i' } },
+                    { Amount: { $regex: escapedWord, $options: 'i' } },
+                    { Deadline: { $regex: escapedWord, $options: 'i' } },
+                    { Note: { $regex: escapedWord, $options: 'i' } }
                 );
             });
             

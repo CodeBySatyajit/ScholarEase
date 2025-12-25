@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const category = btn.getAttribute("data-category");
             const courseCategory = btn.getAttribute("data-coursecategory");
             const state = btn.getAttribute("data-state");
+            const note = btn.getAttribute("data-note");
 
             // Helper function to convert text to list format
             const formatAsList = (text) => {
@@ -60,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("popupCourseCategory").textContent = courseCategory || 'N/A';
             document.getElementById("popupState").textContent = state || 'N/A';
             document.getElementById("popupEducation").textContent = education || 'N/A';
+            document.getElementById("popupNote").innerHTML = formatAsList(note);
 
             // Show popup
             if (popup && overlay) {

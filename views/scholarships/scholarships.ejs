@@ -38,7 +38,7 @@
             <select name="gender">
               <option value="">All</option>
               <option value="Female" <%= filters.gender === 'Female' ? 'selected' : '' %>>Female</option>
-              <option value="Both" <%= filters.gender === 'Both' ? 'selected' : '' %>>General (male + female)</option>
+              <option value="Both" <%= filters.gender === 'Both' ? 'selected' : '' %>>General</option>
             </select>
           </div>
 
@@ -195,6 +195,10 @@
             <div class="popup-detail">
               <strong>State:</strong> <span id="popupState"></span>
             </div>
+               <div class="popup-detail">
+              <strong>Note:</strong>
+              <p id="popupNote"></p>
+            </div>
           </div>
           <div class="popup-buttons">
             <button id="confirmApply" class="btn-confirm">Apply Now</button>
@@ -252,6 +256,7 @@
                 data-Category="<%= scholarship.Category %>"
                 data-CourseCategory="<%= scholarship.CourseCategory %>"
                 data-State="<%= scholarship.State %>"
+                data-note="<%= scholarship.Note %>"
               >
                 Apply Now
               </button>
