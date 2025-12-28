@@ -98,6 +98,11 @@ const userInfoSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Scholarship'
     }],
+    applicationsSubmitted: {
+        type: Number,
+        default: 0,
+        min: 0
+    },
     createdAt: {
         type: Date,
         default: Date.now

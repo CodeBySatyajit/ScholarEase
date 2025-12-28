@@ -41,4 +41,7 @@ router.get("/saved-scholarships", isLoggedIn, UserController.renderSavedScholars
 // Bookmark Routes
 router.post("/bookmark/:scholarshipId", isLoggedIn, UserController.toggleBookmark);
 
+// Applications Routes
+router.post("/update-applications", isLoggedIn, UserController.updateApplicationsSubmitted);
+
 module.exports = router;

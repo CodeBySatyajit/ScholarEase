@@ -264,6 +264,38 @@ module.exports.toggleBookmark = async (req, res) => {
     }
 }
 
+// Update Applications Submitted
+module.exports.updateApplicationsSubmitted = async (req, res) => {
+    try {
+        const { applicationsSubmitted } = req.body;
+        const userId = req.session.user.id;
+
+        // Validate the input
+        if (applicationsSubmitted === undefined || applicationsSubmitted === null) {
+            return res.status(400).json({ success: false, message: 'Applications submitted is required' });
+        }
+
+        const numApplications = parseInt(applicationsSubmitted);
+        if (isNaN(numApplications) || numApplications < 0) {
+            return res.status(400).json({ success: false, message: 'Please enter a valid number' });
+        }
+
+        let userInfo = await UserInfo.findOne({ userID: userId });
+
+        if (!userInfo) {
+            userInfo = new UserInfo({ userID: userId });
+        }
+
+        userInfo.applicationsSubmitted = numApplications;
+        await userInfo.save();
+
+        return res.json({ success: true, applicationsSubmitted: numApplications, message: 'Applications count updated successfully' });
+    } catch (e) {
+        console.error("Update Applications Error:", e);
+        return res.status(500).json({ success: false, message: 'Error updating applications: ' + e.message });
+    }
+}
+
 
 
 
