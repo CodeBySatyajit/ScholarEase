@@ -8,6 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let currentScholarshipLink = "";
 
+    // Ensure popup is hidden on initial load
+    if (popup && overlay) {
+        popup.style.display = "none";
+        overlay.style.display = "none";
+    }
+
     applyBtns.forEach((btn) => {
         btn.addEventListener("click", () => {
             // Get all scholarship details from data attributes
@@ -107,6 +113,23 @@ document.addEventListener("DOMContentLoaded", function () {
             overlay.style.display = "none";
         });
     }
+
+    // Close popup when navigating via any regular link
+    document.querySelectorAll('a[href]')
+        .forEach(a => a.addEventListener('click', () => {
+            if (popup && overlay) {
+                popup.style.display = "none";
+                overlay.style.display = "none";
+            }
+        }));
+
+    // Close popup on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && popup && overlay) {
+            popup.style.display = "none";
+            overlay.style.display = "none";
+        }
+    });
 
     // Bookmark functionality
     const bookmarkBtns = document.querySelectorAll('.bookmark-btn');
