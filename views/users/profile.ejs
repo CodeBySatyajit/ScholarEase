@@ -251,6 +251,30 @@
                             </div>
                         </div>
 
+                        <!-- AI Recommendation Feature -->
+                        <div class="col-12">
+                            <hr class="my-4">
+                            <h6 class="mb-3 fw-bold text-primary"><i class="bi bi-robot me-2"></i>AI Recommendation</h6>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" 
+                                       type="checkbox" 
+                                       role="switch" 
+                                       id="enableAIRecommendation" 
+                                       name="enableAIRecommendation" 
+                                       <%= userInfo && userInfo.enableAIRecommendation ? 'checked' : '' %>>
+                                <label class="form-check-label" for="enableAIRecommendation">
+                                    <strong>Enable AI Scholarship Recommendation</strong>
+                                    <small class="d-block text-muted mt-1">
+                                        Get personalized scholarship recommendations based on your profile. 
+                                        The system will match scholarships to your education level, category, state, and income range.
+                                    </small>
+                                </label>
+                            </div>
+                        </div>
+
                         <!-- Location Details -->
                         <div class="col-12">
                             <hr class="my-4">

@@ -103,6 +103,11 @@ const userInfoSchema = new Schema({
         default: 0,
         min: 0
     },
+    // AI Recommendation Feature
+    enableAIRecommendation: {
+        type: Boolean,
+        default: false
+    },
     createdAt: {
         type: Date,
         default: Date.now

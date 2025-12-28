@@ -2,10 +2,56 @@
 
 <main>
   <div class="section1">
+    <!-- AI Recommendation Badge -->
+    <% if (typeof isRecommendedView !== 'undefined' && isRecommendedView === true) { %>
+    <div class="container mb-4">
+      <div class="alert alert-success border-0 shadow-sm" role="alert">
+        <div class="d-flex align-items-center">
+          <i class="bi bi-robot fs-3 me-3"></i>
+          <div>
+            <h5 class="alert-heading mb-1">
+              <i class="bi bi-star-fill text-warning"></i> AI Recommended for You
+            </h5>
+            <p class="mb-0">
+              These scholarships are personalized based on your profile:
+              <% if (typeof userProfile !== 'undefined' && userProfile) { %>
+                <strong>Education:</strong> <%= userProfile.educationLevel %> | 
+                <strong>Category:</strong> <%= userProfile.casteCategory %> | 
+                <strong>State:</strong> <%= userProfile.state %>
+                <% if (userProfile.gender && userProfile.gender !== 'Not specified') { %>
+                  | <strong>Gender:</strong> <%= userProfile.gender %>
+                <% } %>
+              <% } %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% } %>
+    
     <div class="trending-layout">
       <!-- FILTER PANEL -->
       <div class="filter-panel">
         <h4>Filter</h4>
+        
+        <!-- AI Recommendation Link for Logged-in Users -->
+        <% if (typeof currentUser !== 'undefined' && currentUser) { %>
+        <div class="ai-button-container">
+          <% if (typeof isRecommendedView !== 'undefined' && isRecommendedView === true) { %>
+            <a href="/scholarships" class="ai-btn ai-btn-secondary position-relative">
+              <i class="bi bi-grid-3x3-gap"></i>
+              <span>View All</span>
+            </a>
+          <% } else { %>
+            <a href="/scholarships/recommended" class="ai-btn ai-btn-primary position-relative overflow-hidden">
+              <i class="bi bi-robot"></i>
+              <span>AI Recommendations</span>
+              <i class="bi bi-stars"></i>
+            </a>
+          <% } %>
+        </div>
+        <hr>
+        <% } %>
         
         <form action="/scholarships" method="GET" id="filterForm">
           <!-- Hidden input to preserve search keyword from navbar -->

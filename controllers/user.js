@@ -152,7 +152,7 @@ module.exports.renderProfile = async (req, res) => {
 module.exports.updateProfile = async (req, res) => {
     try {
         const userId = req.session.user.id;
-        const { FirstName, LastName, Mobile, dateOfBirth, gender, educationLevel, state, city, education } = req.body;
+        const { FirstName, LastName, Mobile, dateOfBirth, gender, educationLevel, state, city, education, enableAIRecommendation } = req.body;
 
         // Update User model (basic info)
         await User.findByIdAndUpdate(userId, {
@@ -178,6 +178,9 @@ module.exports.updateProfile = async (req, res) => {
         userInfo.educationLevel = educationLevel || '';
         userInfo.state = state || '';
         userInfo.city = city || '';
+        
+        // Update AI Recommendation preference
+        userInfo.enableAIRecommendation = enableAIRecommendation === 'on' ? true : false;
 
         // Update education object if provided
         if (education) {

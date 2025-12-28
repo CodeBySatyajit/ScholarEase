@@ -6,6 +6,10 @@ const ScholarshipController = require("../controllers/scholarship.js");
 
 const router = express.Router();
 
+// AI Recommendation route - requires login (MUST come BEFORE /scholarships)
+router.route("/scholarships/recommended")
+    .get(WrapAsync(ScholarshipController.renderRecommendedScholarships));
+
 // Only show scholarships - public route
 router.route("/scholarships") 
     .get(ScholarshipController.renderScholarshipForm);

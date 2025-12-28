@@ -1518,6 +1518,64 @@
       width: 6px;
   }
 
+  /* AI Recommendation Buttons */
+  .ai-button-container {
+      margin-bottom: 1rem;
+  }
+
+  .ai-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border: none;
+      padding: 5px 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      cursor: pointer;
+      text-align: center;
+  }
+
+  .ai-btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+  }
+
+  .ai-btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.6);
+  }
+
+  .ai-btn-secondary {
+      background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+      color: white;
+      box-shadow: 0 2px 8px rgba(108, 117, 125, 0.3);
+  }
+
+  .ai-btn-secondary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(108, 117, 125, 0.5);
+  }
+
+  .ai-btn i {
+      font-size: 1rem;
+  }
+
+  .ai-btn-primary i:last-of-type {
+      font-size: 0.8rem;
+      position: absolute;
+      right: 12px;
+  }
+
+  .ai-btn-secondary i:last-of-type {
+      display: none;
+  }
+
   .popup-content::-webkit-scrollbar-track {
       background: #f1f1f1;
       border-radius: 10px;
