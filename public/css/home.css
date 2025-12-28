@@ -1965,9 +1965,9 @@
     }
 
     .reviewer-avatar {
-      width: 55px;
+      width: 100px;
       height: 55px;
-      min-width: 55px;
+      min-width: 90px;
       font-size: 22px;
     }
 

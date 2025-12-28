@@ -70,17 +70,17 @@ body {
 }
 
 .sidebar-header {
-    padding: 1.5rem;
+    padding: 1.5rem 0.5rem 1.5rem 1rem;
     border-bottom: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap:0.3rem;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
 }
 
 .logo-container h5 {
@@ -90,8 +90,52 @@ body {
 }
 
 #closeSidebar {
-    color: var(--text-muted);
+    color: var(--text-dark);
     padding: 0;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: linear-gradient(135deg, #eef2ff 0%, #e9d5ff 100%);
+    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.12);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+
+#closeSidebar i {
+    font-size: 1.15rem;
+}
+
+#closeSidebar:hover,
+#closeSidebar:focus {
+    background: linear-gradient(135deg, #e0e7ff 0%, #d8b4fe 100%);
+    color: var(--primary-dark);
+    box-shadow: 0 10px 26px rgba(79, 70, 229, 0.2);
+    transform: translateY(-1px);
+    outline: none;
+}
+
+#closeSidebar:focus-visible {
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.25);
+}
+
+#closeSidebar:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.12);
+}
+
+/* Larger hit area on very small screens */
+@media (max-width: 480px) {
+    #closeSidebar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+    }
+    #closeSidebar i {
+        font-size: 1.25rem;
+    }
 }
 
 /* Sidebar Navigation */
@@ -524,6 +568,19 @@ body {
         padding: 1rem;
     }
 
+    /* Saved Scholarships header: stack title and button */
+    .saved-header-row {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+    .saved-header-row h5 {
+        flex: 1 1 auto;
+        margin-bottom: 0;
+    }
+    .btn-browse {
+        width: 100%;
+    }
+
     .card-body {
         padding: 1rem !important;
     }
@@ -618,7 +675,8 @@ body {
         box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    .dashboard-sidebar.active {
+    /* Use a consistent `.show` class across breakpoints */
+    .dashboard-sidebar.show {
         left: 0;
     }
 
@@ -774,6 +832,12 @@ body {
         font-size: 0.85rem;
     }
 
+    /* Extra small: ensure button is full-width with spacing */
+    .btn-browse {
+        width: 100%;
+        margin-top: 0.25rem;
+    }
+
     .profile-item {
         padding: 0.6rem;
     }
@@ -826,6 +890,20 @@ body {
     .form-group select {
         padding: 0.6rem;
         font-size: 0.9rem;
+    }
+
+    .avatar-mini{
+        display : none;
+    }
+
+    .avatar-large{
+        min-width:60px;
+        height: 60px;
+    }
+
+    #closeSidebar{
+        min-width: 42px;
+        min-height: 30px;
     }
 }
 /* Print Styles */
