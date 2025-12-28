@@ -639,7 +639,7 @@
     flex-wrap: nowrap;
     gap: 1.2rem;
     align-items: stretch;
-    width: 70%;
+    width: 90%;
     transition: transform 0.3s ease;
     justify-content: center;
     align-items: center;
@@ -1229,9 +1229,10 @@
   }
 
   /* ===== RESPONSIVE DESIGN ===== */
-  
+
   /* Tablet Breakpoint (768px and below) */
   @media (max-width: 768px) {
+
     /* Header Navigation */
     .header-nav {
       gap: 0.8rem;
@@ -1437,6 +1438,7 @@
 
   /* Mobile Breakpoint (640px and below) */
   @media (max-width: 640px) {
+
     /* Header Navigation */
     .header-logo h1 {
       font-size: 1rem;
@@ -1472,7 +1474,7 @@
     .big-div {
       gap: 1rem;
       padding: 1rem !important;
-     margin-top: -2rem !important;
+      margin-top: -2rem !important;
     }
 
     .big-div .div1 {
@@ -1683,9 +1685,21 @@
 
   /* Extra Small Mobile (480px and below) */
   @media (max-width: 480px) {
+
     /* Header */
     .header-1 {
       padding: 0.75rem 0.5rem;
+    }
+
+    .section2-2 {
+      width: 90%;
+      margin: auto;
+    }
+
+    .section2-card-news {
+      min-width: 250px;
+      margin: auto;
+      max-height: 400px;
     }
 
     .header-logo a img {
