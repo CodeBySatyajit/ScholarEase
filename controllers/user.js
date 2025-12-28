@@ -278,21 +278,21 @@ module.exports.updateApplicationsSubmitted = async (req, res) => {
             return res.status(400).json({ success: false, message: 'Applications submitted is required' });
         }
 
-        const numApplications = parseInt(applicationsSubmitted);
-        if (isNaN(numApplications) || numApplications < 0) {
-            return res.status(400).json({ success: false, message: 'Please enter a valid number' });
+        let num = Number(applicationsSubmitted);
+        if (!Number.isFinite(num) || num < 0) {
+            return res.status(400).json({ success: false, message: 'Please enter a valid non-negative number' });
         }
+        // enforce integer
+        num = Math.floor(num);
 
-        let userInfo = await UserInfo.findOne({ userID: userId });
+        // Atomic upsert to avoid race conditions
+        const updated = await UserInfo.findOneAndUpdate(
+            { userID: userId },
+            { $set: { applicationsSubmitted: num } },
+            { new: true, upsert: true, runValidators: true }
+        );
 
-        if (!userInfo) {
-            userInfo = new UserInfo({ userID: userId });
-        }
-
-        userInfo.applicationsSubmitted = numApplications;
-        await userInfo.save();
-
-        return res.json({ success: true, applicationsSubmitted: numApplications, message: 'Applications count updated successfully' });
+        return res.json({ success: true, applicationsSubmitted: updated.applicationsSubmitted, message: 'Applications count updated successfully' });
     } catch (e) {
         console.error("Update Applications Error:", e);
         return res.status(500).json({ success: false, message: 'Error updating applications: ' + e.message });

@@ -55,11 +55,14 @@ store.on("error", function (e) {
 
 
 const sessionConfig = {
-  secret: "your-secret-key",
+  store, // persist sessions in MongoDB
+  secret: process.env.SECRET || "your-secret-key",
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
+  name: "sid",
   cookie: {
     httpOnly: true,
+    sameSite: "lax",
     expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7), // 7 days
     maxAge: 1000 * 60 * 60 * 24 * 7,
   },

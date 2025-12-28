@@ -1253,7 +1253,7 @@
       flex-direction: column;
       gap: 1.5rem;
       padding: 1.5rem !important;
-      margin-top: 0 !important;
+      margin-top: -2rem !important;
     }
 
     .big-div .div1 {
@@ -1472,6 +1472,7 @@
     .big-div {
       gap: 1rem;
       padding: 1rem !important;
+     margin-top: -2rem !important;
     }
 
     .big-div .div1 {
@@ -1698,6 +1699,7 @@
     /* Hero Section */
     .big-div {
       padding: 0.8rem !important;
+      margin-top: -2rem !important;
     }
 
     .hero-badge {

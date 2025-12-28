@@ -577,10 +577,13 @@
 
   .section1-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      /* auto-fit collapses empty tracks so a single card centers nicely */
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
       gap: 1.3rem;
       margin-top: 1rem;
       align-items: stretch;
+      justify-content: center;   /* center the grid when extra space remains */
+      justify-items: center;     /* center items within their tracks */
   }
 
   /* existing styles — no change */

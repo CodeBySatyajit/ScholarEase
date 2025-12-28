@@ -51,7 +51,7 @@
               <i class="bi bi-file-earmark-check-fill"></i>
             </div>
             <div class="ms-3">
-              <h2 class="mb-0">
+              <h2 class="mb-0" id="applicationsCountDisplay">
                 <%= userInfo && userInfo.applicationsSubmitted ?
                 userInfo.applicationsSubmitted : 0 %>
               </h2>
@@ -288,18 +288,32 @@
         const errorDiv = document.getElementById("applicationError");
         const successDiv = document.getElementById("applicationSuccess");
 
+        // helpers
+        const showError = (msg) => {
+          errorDiv.textContent = msg;
+          errorDiv.classList.remove("d-none");
+        };
+        const showSuccess = (msg) => {
+          successDiv.textContent = msg;
+          successDiv.classList.remove("d-none");
+        };
+
         // Clear previous messages
         errorDiv.classList.add("d-none");
         successDiv.classList.add("d-none");
 
-        const applicationsCount = applicationsInput.value;
-
         // Validate input
-        if (applicationsCount === "" || applicationsCount < 0) {
-          errorDiv.textContent = "Please enter a valid number of applications";
-          errorDiv.classList.remove("d-none");
-          return;
+        const rawValue = (applicationsInput.value || "").trim();
+        const numericValue = Number(rawValue);
+        if (!Number.isFinite(numericValue) || numericValue < 0) {
+          return showError("Please enter a valid number of applications");
         }
+        const applicationsCount = Math.floor(numericValue);
+
+        // Loading state
+        const originalText = saveBtn.textContent;
+        saveBtn.disabled = true;
+        saveBtn.textContent = "Saving...";
 
         try {
           const response = await fetch("/update-applications", {
@@ -307,39 +321,46 @@
             headers: {
               "Content-Type": "application/json",
             },
+            credentials: "include", // send session cookie
             body: JSON.stringify({
-              applicationsSubmitted: parseInt(applicationsCount),
+              applicationsSubmitted: applicationsCount,
             }),
           });
+
+          const contentType = response.headers.get("content-type") || "";
+          if (response.redirected || response.url.includes("/login")) {
+            throw new Error("Session expired. Please log in again.");
+          }
+          if (!contentType.includes("application/json")) {
+            throw new Error("Unexpected response from server");
+          }
 
           const data = await response.json();
 
           if (data.success) {
-            successDiv.textContent = data.message;
-            successDiv.classList.remove("d-none");
+            showSuccess(data.message || "Updated successfully");
 
             // Update the display on the page
-            const statsCard = document.querySelector(".stat-card .ms-3 h2");
-            if (statsCard) {
-              statsCard.textContent = data.applicationsSubmitted;
+            const countEl = document.getElementById("applicationsCountDisplay");
+            if (countEl) {
+              countEl.textContent = data.applicationsSubmitted;
             }
 
-            // Close modal after 1.5 seconds
+            // Close modal after 1.2 seconds
             setTimeout(() => {
               const modal = bootstrap.Modal.getInstance(
                 document.getElementById("editApplicationsModal")
               );
-              if (modal) {
-                modal.hide();
-              }
-            }, 1500);
+              if (modal) modal.hide();
+            }, 1200);
           } else {
-            errorDiv.textContent = data.message;
-            errorDiv.classList.remove("d-none");
+            showError(data.message || "Failed to update applications");
           }
         } catch (e) {
-          errorDiv.textContent = "Error updating applications: " + e.message;
-          errorDiv.classList.remove("d-none");
+          showError("Error updating applications: " + e.message);
+        } finally {
+          saveBtn.disabled = false;
+          saveBtn.textContent = originalText;
         }
       });
     }
