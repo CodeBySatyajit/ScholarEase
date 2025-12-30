@@ -44,14 +44,52 @@ const registerSchema = new Schema({
 
   Mobile: {
     type: Number,
-    required: true,
-    unique: true,
+    required: function() {
+      return this.authMethod === 'email'; // Required only for email authentication
+    }
+    // No unique constraint - Google users will have null, email users must provide mobile
   },
 
   Password: {
     type: String,
-    required: true,
+    required: function() {
+      return this.authMethod === 'email'; // Required only for email authentication
+    }
   },
+
+  // OAuth fields
+  googleId: {
+    type: String,
+    sparse: true,          // Allow multiple null values
+    unique: true
+  },
+
+  // Track authentication method
+  authMethod: {
+    type: String,
+    enum: ['email', 'google'],
+    default: 'email'
+  },
+
+  // Store Google profile picture
+  profilePicture: {
+    type: String,
+    default: null
+  },
+
+  // Mark if account is verified
+  isVerified: {
+    type: Boolean,
+    default: function() {
+      return this.authMethod === 'google'; // Auto-verify Google accounts
+    }
+  },
+
+  // Timestamp for account creation method
+  authMethodCreatedAt: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 // Ensure canonical fields used by unique indexes are always populated
@@ -72,7 +110,7 @@ registerSchema.pre("validate", function () {
 });
 
 registerSchema.pre("save", async function () {
-  if (!this.isModified("Password")) {
+  if (!this.isModified("Password") || !this.Password) {
     return;
   }
 

@@ -12,14 +12,19 @@ const ejsMate = require("ejs-mate");
 const flash = require("connect-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
+const passport = require("passport");
 const ExpressError = require("./utils/ExpressError.js");
 const User = require("./models/User.js");
 const userRouter = require("./routes/user.js");
+const authRouter = require("./routes/auth.js");
 const MongoStore = require("connect-mongo").default;
 const scholarshipRouter = require("./routes/scholarship.js");
 const adminRouter = require("./routes/admin.js");
 const reviewRouter = require("./routes/reviews.js");
 const scholarship = require("./models/scholarship.js");
+
+// Initialize Passport configuration
+require("./config/passport.js");
 
 const app = express();
 
@@ -71,6 +76,10 @@ const sessionConfig = {
 app.use(session(sessionConfig));
 app.use(flash());
 
+// Initialize Passport after session
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
@@ -80,6 +89,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/", userRouter);
+app.use("/", authRouter);
 app.use("/", scholarshipRouter);
 app.use("/", adminRouter);
 app.use("/", reviewRouter);
@@ -96,6 +106,7 @@ main()
 async function main() {
   await mongoose.connect(dbUrl, {
     serverSelectionTimeoutMS: 5000,
+    autoIndex: false, // Disable automatic index creation
   });
 }
 
