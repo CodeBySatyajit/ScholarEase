@@ -119,6 +119,10 @@ app.get("/faq", (req, res) => {
   res.render("general/faq.ejs");
 });
 
+app.get("/about", (req, res) => {
+  res.render("general/about.ejs");
+});
+
 app.use((req, res, next) => {
   next(new ExpressError("Page Not Found", 404));
 });
